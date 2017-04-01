@@ -28,6 +28,7 @@
 - (void)getRequest:(NSString *)urlStr
             params:(NSDictionary *)params
           callback:(void (^)(BOOL success, NSDictionary *res))callback {
+    
     NSURL *url = nil;
     if ([urlStr isKindOfClass:[NSURL class]]) {
         url = (NSURL *)urlStr;
@@ -60,11 +61,6 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             !callback?:callback(true, dict);
         });
-        
-        NSMutableArray *images = [NSMutableArray array];
-        for (NSString *item in dict[@"data"]) {
-            [images addObject:dict[@"data"][item]];
-        }
     }];
     [task resume];
 }
