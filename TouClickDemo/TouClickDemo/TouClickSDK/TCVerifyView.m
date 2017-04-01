@@ -9,6 +9,9 @@
 #import "TCVerifyView.h"
 #import "UIView+Addition.h"
 
+#define SCREEN_WIDTH         [[UIScreen mainScreen] bounds].size.width
+#define WindowZoomScale      (SCREEN_WIDTH/320.f)
+
 @interface TCVerifyView()
 
 @property (weak, nonatomic) IBOutlet UIButton *submitBtn;
@@ -62,13 +65,15 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
         
         dispatch_async(dispatch_get_main_queue(), ^{
             _topImageView.image = [self generateImageWithBase64Str:[self restore:images[0]]];
-            _thumbnailLeftImageView.image = [self generateImageWithBase64Str:[self restore:images[1]]];
-            if (images[2]) {
-                _thumbnailRightImageView.hidden = false;
-                _thumbnailRightImageView.image = [self generateImageWithBase64Str:[self restore:images[2]]];
+            NSLog(@"topImgSize ==> %@", NSStringFromCGSize(_topImageView.image.size));
+            
+            _thumbnailRightImageView.image = [self generateImageWithBase64Str:[self restore:images[1]]];
+            if (images.count > 2) {
+                _thumbnailLeftImageView.hidden = false;
+                _thumbnailLeftImageView.image = [self generateImageWithBase64Str:[self restore:images[2]]];
             }
             else {
-                _thumbnailRightImageView.hidden = true;
+                _thumbnailLeftImageView.hidden = true;
             }
         });
     }];
@@ -109,7 +114,7 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
     
     _submitBtn.clipsToBounds = true;
     _submitBtn.layer.cornerRadius = 15.f;
-    _submitBtn.layer.borderColor = [UIColor blueColor].CGColor;
+    _submitBtn.layer.borderColor = [UIColor colorWithRed:31/255.f green:140/255.f blue:194/255.f alpha:1.f].CGColor;
     _submitBtn.layer.borderWidth = 1.f;
     
     _topImageView.userInteractionEnabled = true;
@@ -140,8 +145,7 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
 + (instancetype)show {
     TCVerifyView *view = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil].lastObject;
     [[UIApplication sharedApplication].keyWindow addSubview:view];
-    view.us_height = 270.f;
-    view.us_width = 255.f;
+    view.us_width = 255.f * WindowZoomScale;
     view.center = view.superview.center;
     
     view.layer.transform = CATransform3DMakeScale(1.2f, 1.2f, 1.0f);
@@ -161,11 +165,21 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
 }
 
 - (IBAction)refreshAction {
-    
+    if (_bubbles.count) {
+        [_bubbles removeAllObjects];
+    }
+    [self requestData];
 }
 
 - (IBAction)closeAction:(id)sender {
-    
+    [UIView animateWithDuration:.25
+                          delay:0.0 options:UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionBeginFromCurrentState
+                     animations:^{
+                         self.layer.transform = CATransform3DMakeScale(.001, .001, 1.f);
+                         
+                     } completion:^(BOOL finished) {
+                         [self removeFromSuperview];
+                     }];
 }
 
 - (IBAction)submitAction:(id)sender {
