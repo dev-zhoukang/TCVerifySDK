@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5882AEB21E8FDACE000F5506 /* TCNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5882AEB11E8FDACE000F5506 /* TCNetManager.m */; };
 		588A6AC81E8CF4C900C11E48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 588A6AC71E8CF4C900C11E48 /* main.m */; };
 		588A6ACB1E8CF4C900C11E48 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 588A6ACA1E8CF4C900C11E48 /* AppDelegate.m */; };
 		588A6AD31E8CF4C900C11E48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 588A6AD21E8CF4C900C11E48 /* Assets.xcassets */; };
@@ -61,6 +62,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5882AEB01E8FDACE000F5506 /* TCNetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCNetManager.h; sourceTree = "<group>"; };
+		5882AEB11E8FDACE000F5506 /* TCNetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCNetManager.m; sourceTree = "<group>"; };
 		588A6AC31E8CF4C900C11E48 /* TouClickDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouClickDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		588A6AC71E8CF4C900C11E48 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		588A6AC91E8CF4C900C11E48 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -201,6 +204,8 @@
 				588A6B081E8D0A2700C11E48 /* images */,
 				588A6B051E8D095700C11E48 /* TCVerifyButton.h */,
 				588A6B061E8D095700C11E48 /* TCVerifyButton.m */,
+				5882AEB01E8FDACE000F5506 /* TCNetManager.h */,
+				5882AEB11E8FDACE000F5506 /* TCNetManager.m */,
 				588A6B371E8D2C1000C11E48 /* TCVerifyView.h */,
 				588A6B381E8D2C1000C11E48 /* TCVerifyView.m */,
 				588A6B3A1E8D2C2600C11E48 /* TCVerifyView.xib */,
@@ -421,6 +426,7 @@
 				588A6AC81E8CF4C900C11E48 /* main.m in Sources */,
 				588A6B391E8D2C1000C11E48 /* TCVerifyView.m in Sources */,
 				588A6B071E8D095700C11E48 /* TCVerifyButton.m in Sources */,
+				5882AEB21E8FDACE000F5506 /* TCNetManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

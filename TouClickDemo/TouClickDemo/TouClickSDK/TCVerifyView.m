@@ -8,18 +8,23 @@
 
 #import "TCVerifyView.h"
 #import "UIView+Addition.h"
+#import "TCNetManager.h"
 
 #define SCREEN_WIDTH         [[UIScreen mainScreen] bounds].size.width
 #define WindowZoomScale      (SCREEN_WIDTH/320.f)
+#define KeyboardAnimationCurve  7 << 16
 
 @interface TCVerifyView()
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topImgWidth;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIButton *submitBtn;
+@property (weak, nonatomic) IBOutlet UIView *bgView;
 @property (weak, nonatomic) IBOutlet UIImageView *topImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnailLeftImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnailRightImageView;
-@property (nonatomic, strong) NSURLSession *session;
-@property (nonatomic, strong) NSMutableArray *bubbles;
+@property (nonatomic, strong) NSMutableArray <UIView *> *bubbles;
+@property (nonatomic, assign) CGFloat scaling; // 缩放系数
 
 @end
 
@@ -36,48 +41,27 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
 }
 
 - (void)requestData {
-    NSURL *url = [NSURL URLWithString:@"http://cap-5-2-0.touclick.com/public/captcha?cb=cb15B27852452D9PZS4X0N9U67IIGFC2H6&b=45f5b905-4d15-41ca-ba4b-3a8612fc43cf&ct=14&sid=4764d7ca-782b-434a-b0cb-5b775e16ad01&ran=0.07404862641221288"];
-    _session = [NSURLSession sharedSession];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
-    NSURLSessionDataTask *task = [_session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if (error) {
-            return;
-        }
-        
-        NSString *jsonStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        
-        if (!jsonStr.length) {
-            NSLog(@"jsonStr 为空");
-            return;
-        }
-        
-        NSString *subStr = [jsonStr componentsSeparatedByString:@"("][1];
-        subStr = [subStr stringByReplacingOccurrencesOfString:@")" withString:@""];
-        NSData *jsonData = [subStr dataUsingEncoding:NSUTF8StringEncoding];
-        
-        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
-        
+    NSString *path = @"http://cap-5-2-0.touclick.com/public/captcha?cb=cb15B27852452D9PZS4X0N9U67IIGFC2H6&b=45f5b905-4d15-41ca-ba4b-3a8612fc43cf&ct=14&sid=4764d7ca-782b-434a-b0cb-5b775e16ad01&ran=0.07404862641221288";
+    
+    [[TCNetManager shareInstance] getRequest:path params:nil callback:^(BOOL success, NSDictionary *res) {
         NSMutableArray *images = [NSMutableArray array];
-        for (NSString *item in dict[@"data"]) {
-            [images addObject:dict[@"data"][item]];
+        for (NSString *item in res[@"data"]) {
+            [images addObject:res[@"data"][item]];
         }
+        _topImageView.image = [self generateImageWithBase64Str:[self restore:images[0]]];
+        NSLog(@"topImgSize ==> %@", NSStringFromCGSize(_topImageView.image.size));
+        _scaling = (_topImageView.image.size.width / [UIScreen mainScreen].scale) / _topImageView.us_width;
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            _topImageView.image = [self generateImageWithBase64Str:[self restore:images[0]]];
-            NSLog(@"topImgSize ==> %@", NSStringFromCGSize(_topImageView.image.size));
-            
-            _thumbnailRightImageView.image = [self generateImageWithBase64Str:[self restore:images[1]]];
-            if (images.count > 2) {
-                _thumbnailLeftImageView.hidden = false;
-                _thumbnailLeftImageView.image = [self generateImageWithBase64Str:[self restore:images[2]]];
-            }
-            else {
-                _thumbnailLeftImageView.hidden = true;
-            }
-        });
+        _thumbnailRightImageView.image = [self generateImageWithBase64Str:[self restore:images[1]]];
+        if (images.count > 2) {
+            _thumbnailLeftImageView.hidden = false;
+            _thumbnailLeftImageView.image = [self generateImageWithBase64Str:[self restore:images[2]]];
+        }
+        else {
+            _thumbnailLeftImageView.hidden = true;
+        }
     }];
-    [task resume];
 }
 
 - (UIImage *)generateImageWithBase64Str:(NSString *)base64Str {
@@ -120,6 +104,8 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
     _topImageView.userInteractionEnabled = true;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTopImageViewTap:)];
     [_topImageView addGestureRecognizer:tap];
+    
+    _containerView.layer.cornerRadius = 6.f;
 }
 
 - (void)handleTopImageViewTap:(UIGestureRecognizer *)tap {
@@ -144,19 +130,20 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
 
 + (instancetype)show {
     TCVerifyView *view = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil].lastObject;
+    view.bgView.alpha = 0;
     [[UIApplication sharedApplication].keyWindow addSubview:view];
-    view.us_width = 255.f * WindowZoomScale;
-    view.center = view.superview.center;
+    view.frame = [UIScreen mainScreen].bounds;
     
-    view.layer.transform = CATransform3DMakeScale(1.2f, 1.2f, 1.0f);
-    view.alpha = 0.0f;
+    view.topImgWidth.constant = 235.f * WindowZoomScale;
+    view.containerView.layer.transform = CATransform3DMakeScale(.01f, .01f, 1.f);
+    view.containerView.alpha = 0.0f;
     
     [UIView animateWithDuration:.25
-                          delay:0.0 options:UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionBeginFromCurrentState
+                          delay:0.0 options:KeyboardAnimationCurve
                      animations:^{
-                         
-                         view.layer.transform = CATransform3DIdentity;
-                         view.alpha = 1.0f;
+                         view.bgView.alpha = 1;
+                         view.containerView.layer.transform = CATransform3DIdentity;
+                         view.containerView.alpha = 1.0f;
                          
                      } completion:^(BOOL finished) {
                      }];
@@ -173,10 +160,10 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
 
 - (IBAction)closeAction:(id)sender {
     [UIView animateWithDuration:.25
-                          delay:0.0 options:UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionBeginFromCurrentState
+                          delay:0.0 options:KeyboardAnimationCurve
                      animations:^{
-                         self.layer.transform = CATransform3DMakeScale(.001, .001, 1.f);
-                         
+                         self.containerView.layer.transform = CATransform3DMakeScale(.001, .001, 1.f);
+                         self.bgView.alpha = 0;
                      } completion:^(BOOL finished) {
                          [self removeFromSuperview];
                      }];
@@ -184,10 +171,25 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
 
 - (IBAction)submitAction:(id)sender {
     
-}
-
-- (void)dealloc {
-    [_session invalidateAndCancel];
+    if (!_bubbles.count) {
+        NSLog(@"没有点击选择图片，验证失败");
+        return;
+    }
+    
+    __block NSString *locationStr = @"";
+    [_bubbles enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSString *pointStr = [NSString stringWithFormat:@"%d,%d,", (int)(view.center.x * _scaling), (int)(view.center.y * _scaling)];
+        locationStr = [locationStr stringByAppendingString:pointStr];
+    }];
+    
+    locationStr = [locationStr substringToIndex:locationStr.length - 1];
+    
+    NSLog(@"locationStr ==> %@", locationStr);
+    
+    NSString *path = @"http://ver-5-2-0.touclick.com/verifybehavior?b=45f5b905-4d15-41ca-ba4b-3a8612fc43cf&cb=ve15B2786223F0EW23SSZ4VOK5C2J32P1I&ct=14&ckcode=&sid=758db795-2604-4fda-9825-5557d04d10ee&r=676,200,829,225&ran=0.6501818895574928";
+    [[TCNetManager shareInstance] getRequest:path params:nil callback:^(BOOL success, NSDictionary *res) {
+       NSLog(@"res ===> %@", res);
+    }];
 }
 
 @end
