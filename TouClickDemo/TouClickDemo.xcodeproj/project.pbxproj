@@ -654,6 +654,7 @@
 				588A6AF21E8CF4CA00C11E48 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		588A6AF31E8CF4CA00C11E48 /* Build configuration list for PBXNativeTarget "TouClickDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -662,6 +663,7 @@
 				588A6AF51E8CF4CA00C11E48 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		588A6AF61E8CF4CA00C11E48 /* Build configuration list for PBXNativeTarget "TouClickDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -670,6 +672,7 @@
 				588A6AF81E8CF4CA00C11E48 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
