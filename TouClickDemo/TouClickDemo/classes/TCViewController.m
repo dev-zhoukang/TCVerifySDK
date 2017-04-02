@@ -91,6 +91,9 @@
     _contentView = [UIView new];
     _contentView.frame = (CGRect){CGPointZero, scrollView.contentSize};
     [scrollView addSubview:_contentView];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapContentView)];
+    [_contentView addGestureRecognizer:tap];
 }
 
 - (UIView *)setupInputView:(NSString *)title {
@@ -122,6 +125,10 @@
     field.placeholder = @"测试请随意填写";
     
     return view;
+}
+
+- (void)handleTapContentView {
+    [self.view endEditing:true];
 }
 
 - (void)loginAction {

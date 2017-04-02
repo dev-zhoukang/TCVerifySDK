@@ -64,6 +64,7 @@ typedef void (^ZKSettingItemBlock)(NSDictionary *cbData);
 }
 
 - (void)clickAction {
+    [[UIApplication sharedApplication].keyWindow endEditing:true];
     NSLog(@"start verify");
     [TCVerifyView show];
 }
