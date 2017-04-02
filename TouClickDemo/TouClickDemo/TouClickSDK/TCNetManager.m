@@ -27,7 +27,7 @@
 
 - (void)getRequest:(NSString *)urlStr
             params:(NSDictionary *)params
-          callback:(void (^)(BOOL success, NSDictionary *res))callback {
+          callback:(void (^)(NSError *error, NSDictionary *res))callback {
     
     NSURL *url = nil;
     if ([urlStr isKindOfClass:[NSURL class]]) {
@@ -41,14 +41,18 @@
     
     NSURLSessionDataTask *task = [_session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error) {
+            NSLog(@"请求失败 ==> %@", error);
+            !callback?:callback(error, nil);
             return;
         }
         
         NSString *jsonStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         
         if (!jsonStr.length) {
-            NSLog(@"jsonStr 为空");
-            !callback?:callback(false, nil);
+            NSLog(@"解析 jsonStr 为空");
+            NSError *error = [NSError errorWithDomain:@"com.zk" code:0 userInfo:@{@"message": @"解析 jsonStr 为空"}];
+            
+            !callback?:callback(error, nil);
             return;
         }
         
@@ -59,7 +63,7 @@
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            !callback?:callback(true, dict);
+            !callback?:callback(nil, dict);
         });
     }];
     [task resume];

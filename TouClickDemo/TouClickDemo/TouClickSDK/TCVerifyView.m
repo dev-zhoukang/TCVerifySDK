@@ -10,21 +10,19 @@
 #import "UIView+Addition.h"
 #import "TCNetManager.h"
 
-#define SCREEN_WIDTH         [[UIScreen mainScreen] bounds].size.width
-#define WindowZoomScale      (SCREEN_WIDTH/320.f)
 #define KeyboardAnimationCurve  7 << 16
 
 @interface TCVerifyView()
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topImgWidth;
-@property (weak, nonatomic) IBOutlet UIView *containerView;
-@property (weak, nonatomic) IBOutlet UIButton *submitBtn;
-@property (weak, nonatomic) IBOutlet UIView *bgView;
-@property (weak, nonatomic) IBOutlet UIImageView *topImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *thumbnailLeftImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *thumbnailRightImageView;
+@property (weak, nonatomic) IBOutlet UIView             *containerView;
+@property (weak, nonatomic) IBOutlet UIButton           *submitBtn;
+@property (weak, nonatomic) IBOutlet UIView             *bgView;
+@property (weak, nonatomic) IBOutlet UIImageView        *topImageView;
+@property (weak, nonatomic) IBOutlet UIImageView        *thumbnailLeftImageView;
+@property (weak, nonatomic) IBOutlet UIImageView        *thumbnailRightImageView;
 @property (nonatomic, strong) NSMutableArray <UIView *> *bubbles;
-@property (nonatomic, assign) CGFloat scaling; // 缩放系数
+@property (nonatomic, assign) CGFloat                   scaling; // 缩放系数
 
 @end
 
@@ -44,13 +42,19 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
     
     NSString *path = @"http://cap-5-2-0.touclick.com/public/captcha?cb=cb15B27852452D9PZS4X0N9U67IIGFC2H6&b=45f5b905-4d15-41ca-ba4b-3a8612fc43cf&ct=14&sid=4764d7ca-782b-434a-b0cb-5b775e16ad01&ran=0.07404862641221288";
     
-    [[TCNetManager shareInstance] getRequest:path params:nil callback:^(BOOL success, NSDictionary *res) {
+    [[TCNetManager shareInstance] getRequest:path params:nil callback:^(NSError *error, NSDictionary *res) {
+        
+        if (error) {
+            NSLog(@"%@", error);
+            return;
+        }
+        
         NSMutableArray *images = [NSMutableArray array];
-        for (NSString *item in res[@"data"]) {
-            [images addObject:res[@"data"][item]];
+        for (NSString *key in res[@"data"]) {
+            [images addObject:res[@"data"][key]];
         }
         _topImageView.image = [self generateImageWithBase64Str:[self restore:images[0]]];
-        NSLog(@"topImgSize ==> %@", NSStringFromCGSize(_topImageView.image.size));
+        NSLog(@"oriImgSize ==> %@", NSStringFromCGSize(_topImageView.image.size));
         _scaling = (_topImageView.image.size.width / [UIScreen mainScreen].scale) / _topImageView.us_width;
         
         _thumbnailRightImageView.image = [self generateImageWithBase64Str:[self restore:images[1]]];
@@ -138,7 +142,7 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
     view.containerView.layer.transform = CATransform3DMakeScale(.01f, .01f, 1.f);
     view.containerView.alpha = 0.0f;
     
-    [UIView animateWithDuration:.25
+    [UIView animateWithDuration:.2
                           delay:0.0 options:KeyboardAnimationCurve
                      animations:^{
                          view.bgView.alpha = 1;
@@ -159,11 +163,11 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
 }
 
 - (IBAction)closeAction:(id)sender {
-    [UIView animateWithDuration:.25
+    [UIView animateWithDuration:.12
                           delay:0.0 options:KeyboardAnimationCurve
                      animations:^{
                          self.containerView.layer.transform = CATransform3DMakeScale(.001, .001, 1.f);
-                         self.bgView.alpha = 0;
+                         self.alpha = 0;
                      } completion:^(BOOL finished) {
                          [self removeFromSuperview];
                      }];
@@ -187,7 +191,7 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
     NSLog(@"locationStr ==> %@", locationStr);
     
     NSString *path = @"http://ver-5-2-0.touclick.com/verifybehavior?b=45f5b905-4d15-41ca-ba4b-3a8612fc43cf&cb=ve15B2786223F0EW23SSZ4VOK5C2J32P1I&ct=14&ckcode=&sid=758db795-2604-4fda-9825-5557d04d10ee&r=676,200,829,225&ran=0.6501818895574928";
-    [[TCNetManager shareInstance] getRequest:path params:nil callback:^(BOOL success, NSDictionary *res) {
+    [[TCNetManager shareInstance] getRequest:path params:nil callback:^(NSError *error, NSDictionary *res) {
        NSLog(@"res ===> %@", res);
     }];
 }

@@ -39,7 +39,6 @@ typedef void (^ZKSettingItemBlock)(NSDictionary *cbData);
 
 - (void)verifyBtnWithCompletion:(void (^)(NSDictionary * _Nullable))completion {
     _completion = completion;
-    TCVerifyButton *btn = [[TCVerifyButton alloc] init];
 }
 
 - (void)setup {
@@ -66,11 +65,10 @@ typedef void (^ZKSettingItemBlock)(NSDictionary *cbData);
 
 - (void)clickAction {
     NSLog(@"start verify");
-    TCVerifyView *verifyView = [TCVerifyView show];
+    [TCVerifyView show];
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
     
     CGRect imageViewFrame = self.imageView.frame;

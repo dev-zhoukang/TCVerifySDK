@@ -14,6 +14,6 @@
 
 - (void)getRequest:(NSString *)urlStr
             params:(NSDictionary *)params
-          callback:(void (^)(BOOL success, NSDictionary *res))callback ;
+          callback:(void (^)(NSError *error, NSDictionary *res))callback ;
 
 @end
