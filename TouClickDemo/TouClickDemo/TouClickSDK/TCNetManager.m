@@ -97,7 +97,7 @@
                                                          withString:@"$1\"$2\":"
                                                             options:NSRegularExpressionSearch
                                                               range:NSMakeRange(0, [validString length])];
-    validString = [validString stringByReplacingOccurrencesOfString:@"\r\n" withString:@"\\r\\n"];
+    validString = [validString stringByReplacingOccurrencesOfString:@"\r\n" withString:@""];
     return validString;
 }
 

@@ -27,6 +27,7 @@
 @property (nonatomic, assign) CGFloat                   scaling; // 缩放系数
 @property (nonatomic, copy) NSString *sid;
 @property (nonatomic, strong) TCCheckModel *checkModel;
+@property (nonatomic, copy) NSString *verifySid;
 
 @end
 
@@ -46,7 +47,7 @@
     params[@"cb"] = [NSString stringWithFormat:@"beh%@", [self getSID]];
     params[@"b"] = TCPublicKey;
     params[@"ran"] = [NSString stringWithFormat:@"%f", TCRandom];
-    
+    [ZKLoading showCircleView:_topImageView];
     [[TCNetManager shareInstance] getRequest:path params:params callback:^(NSError *error, NSDictionary *res) {
         if (error) {
             NSLog(@"%@", error);
@@ -66,13 +67,13 @@
     params[@"ct"] = @"14";
     params[@"sid"] = _checkModel.sid;
     params[@"ran"] = [NSString stringWithFormat:@"%f", TCRandom];
-    [ZKLoading showCircleView:_topImageView];
     [[TCNetManager shareInstance] getRequest:path params:params callback:^(NSError *error, NSDictionary *res) {
         
         if (error) {
             NSLog(@"%@", error);
             return;
         }
+        _verifySid = res[@"sid"];
         
         NSMutableArray *images = [NSMutableArray array];
         for (NSString *key in res[@"data"]) {
@@ -189,9 +190,16 @@
     return view;
 }
 
+- (void)clearBubbles {
+    [_bubbles enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj removeFromSuperview];
+    }];
+    [_bubbles removeAllObjects];
+}
+
 - (IBAction)refreshAction:(UIButton *)btn {
     if (_bubbles.count) {
-        [_bubbles removeAllObjects];
+        [self clearBubbles];
     }
     
     btn.enabled = false;
@@ -230,10 +238,19 @@
     locationStr = [locationStr substringToIndex:locationStr.length - 1];
     
     NSLog(@"locationStr ==> %@", locationStr);
+
+    NSString *path = TCUrl_Verify;
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"r"] = locationStr;
+    params[@"ran"] = [NSString stringWithFormat:@"%f", TCRandom];
+    params[@"cb"] = [NSString stringWithFormat:@"ve%@", [self getSID]];
+    params[@"sid"] = _verifySid;
+    params[@"b"] = TCPublicKey;
+    params[@"ckcode"] = @"";
+    params[@"ct"] = @"14";
     
-    NSString *path = @"http://ver-5-2-0.touclick.com/verifybehavior?b=45f5b905-4d15-41ca-ba4b-3a8612fc43cf&cb=ve15B2786223F0EW23SSZ4VOK5C2J32P1I&ct=14&ckcode=&sid=758db795-2604-4fda-9825-5557d04d10ee&r=676,200,829,225&ran=0.6501818895574928";
-    [[TCNetManager shareInstance] getRequest:path params:nil callback:^(NSError *error, NSDictionary *res) {
-       NSLog(@"res ===> %@", res);
+    [[TCNetManager shareInstance] getRequest:path params:params callback:^(NSError *error, NSDictionary *res) {
+       NSLog(@"verify res ===> %@", res);
     }];
 }
 
