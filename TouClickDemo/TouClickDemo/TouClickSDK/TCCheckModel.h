@@ -10,4 +10,10 @@
 
 @interface TCCheckModel : NSObject
 
+@property (nonatomic, copy) NSString *sid;
+@property (nonatomic, copy) NSString *token;
+@property (nonatomic, copy) NSString *warning;
+
++ (instancetype)modelWithDict:(NSDictionary *)dict;
+
 @end

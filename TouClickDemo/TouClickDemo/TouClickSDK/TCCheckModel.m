@@ -10,4 +10,10 @@
 
 @implementation TCCheckModel
 
++ (instancetype)modelWithDict:(NSDictionary *)dict {
+    TCCheckModel *model = [TCCheckModel new];
+    model.sid = dict[@"sid"];
+    return model;
+}
+
 @end

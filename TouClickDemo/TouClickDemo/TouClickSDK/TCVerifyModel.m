@@ -10,8 +10,4 @@
 
 @implementation TCVerifyModel
 
-+ (instancetype)modelWithDict:(NSDictionary *)dict {
-    return nil;
-}
-
 @end

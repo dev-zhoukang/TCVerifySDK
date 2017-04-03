@@ -26,24 +26,21 @@
 @property (nonatomic, strong) NSMutableArray <UIView *> *bubbles;
 @property (nonatomic, assign) CGFloat                   scaling; // 缩放系数
 @property (nonatomic, copy) NSString *sid;
+@property (nonatomic, strong) TCCheckModel *checkModel;
 
 @end
-
-// url:"http://cap-5-2-0.touclick.com/public/captcha?b="+PUB+"&ct=13,&sid="+$.cookie("touclick-sid")+"&ran=" + Math.random(),
-static NSString *const pubKey = @"9c233422-a783-4522-b279-2393e9d9a8e2";
-static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/public/captcha?";
 
 @implementation TCVerifyView
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self setup];
-    [self checkData];
-//    [self requestCaptcha];
+    [self checkDataAndThen:^(){
+        [self requestCaptcha];
+    }];
 }
-//params.append(CheckUrl).append("cb=").append(cb).append("&b=").append(publicKey).append("&ran=")
-//.append(Math.random());
-- (void)checkData {
+
+- (void)checkDataAndThen:(void (^) ())callback {
     NSString *path = TCUrl_Check;
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"cb"] = [NSString stringWithFormat:@"beh%@", [self getSID]];
@@ -51,7 +48,12 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
     params[@"ran"] = [NSString stringWithFormat:@"%f", TCRandom];
     
     [[TCNetManager shareInstance] getRequest:path params:params callback:^(NSError *error, NSDictionary *res) {
-        NSLog(@"===>%@", res);
+        if (error) {
+            NSLog(@"%@", error);
+            return;
+        }
+        _checkModel = [TCCheckModel modelWithDict:res];
+        !callback?:callback();
     }];
 }
 
@@ -59,11 +61,11 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
     NSString *path = TCUrl_Captcha;
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"cb"] = @"cb15B27852452D9PZS4X0N9U67IIGFC2H6";
-    params[@"b"] = @"45f5b905-4d15-41ca-ba4b-3a8612fc43cf";
+    params[@"cb"] = [NSString stringWithFormat:@"cb%@", [self getSID]];
+    params[@"b"] = TCPublicKey;
     params[@"ct"] = @"14";
-    params[@"sid"] = @"4764d7ca-782b-434a-b0cb-5b775e16ad01";
-    params[@"ran"] = @"0.07404862641221288";
+    params[@"sid"] = _checkModel.sid;
+    params[@"ran"] = [NSString stringWithFormat:@"%f", TCRandom];
     [ZKLoading showCircleView:_topImageView];
     [[TCNetManager shareInstance] getRequest:path params:params callback:^(NSError *error, NSDictionary *res) {
         
@@ -194,7 +196,9 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
     
     btn.enabled = false;
     
-    [self checkData];
+    [self checkDataAndThen:^{
+        [self requestCaptcha];
+    }];
 }
 
 - (IBAction)closeAction:(id)sender {
