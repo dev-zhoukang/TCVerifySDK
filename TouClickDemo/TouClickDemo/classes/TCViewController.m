@@ -38,12 +38,6 @@ static const CGFloat kDefaultMargin = 15.f;
     [self setupScrollView];
     [self setupLogoView];
     
-    
-    unichar ch = 32 + 55;
-//    NSString *str =[NSString stringWithUTF8String:(char *)&ch];
-    NSString *str = [NSString stringWithFormat:@"%c", ch];
-    NSLog(@"====>%@", str);
-    
     UIView *accountView = [self setupInputView:@"账户"];
     accountView.us_centerY = _contentView.us_centerY - 100.f;
     
@@ -52,7 +46,7 @@ static const CGFloat kDefaultMargin = 15.f;
     
     TCVerifyButton *verifyBtn = [[TCVerifyButton alloc] init];
     [_contentView addSubview:verifyBtn];
-    [verifyBtn verifyBtnWithCompletion:^(NSString * _Nullable token) {
+    [verifyBtn verifyCompletion:^(NSString * _Nullable token) {
         NSLog(@"验证成功, 获取到 tocken ==> %@", token);
     }];
     

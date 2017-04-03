@@ -13,6 +13,7 @@
 #import "TCGlobalHeader.h"
 #import "TCCheckModel.h"
 #import "TCVerifyModel.h"
+#import "TCVerifyUtil.h"
 
 @interface TCVerifyView()
 
@@ -23,12 +24,12 @@
 @property (weak, nonatomic) IBOutlet UIImageView        *topImageView;
 @property (weak, nonatomic) IBOutlet UIImageView        *thumbnailLeftImageView;
 @property (weak, nonatomic) IBOutlet UIImageView        *thumbnailRightImageView;
-@property (weak, nonatomic) IBOutlet UIButton *refreshBtn;
+@property (weak, nonatomic) IBOutlet UIButton           *refreshBtn;
+
 @property (nonatomic, strong) NSMutableArray <UIView *> *bubbles;
 @property (nonatomic, assign) CGFloat                   scaling; // 缩放系数
-@property (nonatomic, copy) NSString *sid;
-@property (nonatomic, strong) TCCheckModel *checkModel;
-@property (nonatomic, copy) NSString *verifySid;
+@property (nonatomic, strong) TCCheckModel              *checkModel;
+@property (nonatomic, copy) NSString                    *verifySid;
 @property (nonatomic, copy) void (^completion)(TCVerifyModel *);
 
 @end
@@ -43,12 +44,34 @@
     }];
 }
 
++ (instancetype)showWithCompletion:(void (^)(TCVerifyModel *))completion {
+    TCVerifyView *view = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil].lastObject;
+    view.bgView.alpha = 0;
+    [[UIApplication sharedApplication].keyWindow addSubview:view];
+    view.frame = [UIScreen mainScreen].bounds;
+    
+    view.topImgWidth.constant = 235.f * WindowZoomScale;
+    view.containerView.layer.transform = CATransform3DMakeScale(.01f, .01f, 1.f);
+    view.containerView.alpha = 0.0f;
+    view.completion = completion;
+    
+    [UIView animateWithDuration:.02
+                          delay:0.0 options:KeyboardAnimationCurve
+                     animations:^{
+                         view.bgView.alpha = 1;
+                         view.containerView.layer.transform = CATransform3DIdentity;
+                         view.containerView.alpha = 1.0f;
+                         
+                     } completion:nil];
+    return view;
+}
+
 - (void)checkDataAndThen:(void (^) ())callback {
 
     [self disableSubmitBtn:true];
     NSString *path = TCUrl_Check;
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"cb"] = [NSString stringWithFormat:@"beh%@", [self getSID]];
+    params[@"cb"] = [NSString stringWithFormat:@"beh%@", [TCVerifyUtil getSID]];
     params[@"b"] = TCPublicKey;
     params[@"ran"] = [NSString stringWithFormat:@"%f", TCRandom];
     [ZKLoading showCircleView:_topImageView];
@@ -72,7 +95,7 @@
     NSString *path = TCUrl_Captcha;
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"cb"] = [NSString stringWithFormat:@"cb%@", [self getSID]];
+    params[@"cb"] = [NSString stringWithFormat:@"cb%@", [TCVerifyUtil getSID]];
     params[@"b"] = TCPublicKey;
     params[@"ct"] = @"14";
     params[@"sid"] = _checkModel.sid;
@@ -85,55 +108,30 @@
         }
         _verifySid = res[@"sid"];
         
-        NSMutableArray *images = [NSMutableArray array];
-        for (NSString *key in res[@"data"]) {
-            [images addObject:res[@"data"][key]];
-        }
-        _topImageView.image = [self generateImageWithBase64Str:[self restore:images[0]]];
-        NSLog(@"oriImgSize ==> %@", NSStringFromCGSize(_topImageView.image.size));
-        _scaling = (_topImageView.image.size.width / 2.f) / _topImageView.us_width;
-        
-        _thumbnailRightImageView.image = [self generateImageWithBase64Str:[self restore:images[1]]];
-        if (images.count > 2) {
-            _thumbnailLeftImageView.hidden = false;
-            _thumbnailLeftImageView.image = [self generateImageWithBase64Str:[self restore:images[2]]];
-        }
-        else {
-            _thumbnailLeftImageView.hidden = true;
-        }
+        [self updateImagesWithRes:res];
         [ZKLoading hide];
         _refreshBtn.enabled = true;
         [self disableSubmitBtn:false];
     }];
 }
 
-- (UIImage *)generateImageWithBase64Str:(NSString *)base64Str {
-    NSData *data = [NSData dataWithContentsOfURL: [NSURL URLWithString: base64Str]];
-    UIImage *image = [UIImage imageWithData: data];
-    return image;
-}
-
-- (NSString *)restore:(NSDictionary *)b64Dict {
-    
-    NSString *base64Str = [b64Dict[@"baseStr"] copy];
-    
-    NSInteger ran_count =  TCRandom * 500;
-    NSInteger count_a = ([b64Dict[@"countA"] integerValue] - ran_count) % 4 + ran_count;
-
-    for (int i = 0; i < count_a; i ++) {
-        base64Str = [base64Str stringByAppendingString:@"A"];
+- (void)updateImagesWithRes:(NSDictionary *)res {
+    NSMutableArray *images = [NSMutableArray array];
+    for (NSString *key in res[@"data"]) {
+        [images addObject:res[@"data"][key]];
     }
-    for (int i = 0; i < [b64Dict[@"countEqual"] integerValue]; i++) {
-        base64Str = [base64Str stringByAppendingString:@"="];
+    _topImageView.image = [TCVerifyUtil generateImageWithBase64Dict:images[0]];
+    NSLog(@"oriImgSize ==> %@", NSStringFromCGSize(_topImageView.image.size));
+    _scaling = (_topImageView.image.size.width / 2.f) / _topImageView.us_width;
+    
+    _thumbnailRightImageView.image = [TCVerifyUtil generateImageWithBase64Dict:images[1]];
+    if (images.count > 2) {
+        _thumbnailLeftImageView.hidden = false;
+        _thumbnailLeftImageView.image = [TCVerifyUtil generateImageWithBase64Dict:images[2]];
     }
-    NSString *prefix = @"data:image/";
-    NSString *suffix = @";base64,";
-    NSDictionary *typeDict = @{ @"p": @"png", @"j": @"jpg" };
-    
-    NSString *typeStr = typeDict[b64Dict[@"f"]]?:typeDict[@"j"];
-    
-    base64Str = [[[prefix stringByAppendingString:typeStr] stringByAppendingString:suffix] stringByAppendingString:base64Str];
-    return base64Str;
+    else {
+        _thumbnailLeftImageView.hidden = true;
+    }
 }
 
 - (void)setup {
@@ -172,32 +170,11 @@
     [_bubbles removeObject:tap.view];
 }
 
-+ (instancetype)showWithCompletion:(void (^)(TCVerifyModel *))completion {
-    TCVerifyView *view = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil].lastObject;
-    view.bgView.alpha = 0;
-    [[UIApplication sharedApplication].keyWindow addSubview:view];
-    view.frame = [UIScreen mainScreen].bounds;
-    
-    view.topImgWidth.constant = 235.f * WindowZoomScale;
-    
-    view.containerView.layer.transform = CATransform3DMakeScale(.01f, .01f, 1.f);
-    view.containerView.alpha = 0.0f;
-    
-    view.completion = completion;
-    
-    [UIView animateWithDuration:.02
-                          delay:0.0 options:KeyboardAnimationCurve
-                     animations:^{
-                         view.bgView.alpha = 1;
-                         view.containerView.layer.transform = CATransform3DIdentity;
-                         view.containerView.alpha = 1.0f;
-                         
-                     } completion:nil];
-    
-    return view;
-}
-
 - (void)clearBubbles {
+    if (!_bubbles.count) {
+        return;
+    }
+    
     [_bubbles enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [obj removeFromSuperview];
     }];
@@ -208,9 +185,7 @@
     if (_bubbles.count) {
         [self clearBubbles];
     }
-    
     btn.enabled = false;
-    
     [self checkDataAndThen:^{
         [self requestCaptcha];
     }];
@@ -230,7 +205,6 @@
 - (IBAction)submitAction:(UIButton *)btn {
     btn.backgroundColor = [UIColor whiteColor];
     [self disableSubmitBtn:true];
-    
     [btn setTitleColor:GlobalBlueColor_Normal forState:UIControlStateNormal];
     
     if (!_bubbles.count) {
@@ -253,7 +227,7 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"r"] = locationStr;
     params[@"ran"] = [NSString stringWithFormat:@"%f", TCRandom];
-    params[@"cb"] = [NSString stringWithFormat:@"ve%@", [self getSID]];
+    params[@"cb"] = [NSString stringWithFormat:@"ve%@", [TCVerifyUtil getSID]];
     params[@"sid"] = _verifySid;
     params[@"b"] = TCPublicKey;
     params[@"ckcode"] = @"";
@@ -281,28 +255,6 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self refreshAction:nil];
     });
-}
-
-- (NSString *)getSID {
-    NSDate *date = [NSDate date];
-    NSString *timestamp = [NSString stringWithFormat:@"%.0f",[date timeIntervalSince1970]*1000.f];
-    NSString *hexString = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1lx",(long)[timestamp integerValue]]];
-    timestamp = [hexString uppercaseString];
-    NSInteger count = 32 - [timestamp length];
-    while (count --) {
-        int code = TCRandom * 36;
-        timestamp = [timestamp stringByAppendingString:[self getChar:code]];
-    }
-    return timestamp;
-}
-
-- (NSString *)getChar:(int)code {
-    if (code < 10) {
-        return [NSString stringWithFormat:@"%d", code];
-    }
-    int newCode = code + 55;
-    NSString *codeStr = [NSString stringWithUTF8String:(char *)&(newCode)];
-    return codeStr;
 }
 
 - (IBAction)submitBtnTouchDown:(UIButton *)btn {

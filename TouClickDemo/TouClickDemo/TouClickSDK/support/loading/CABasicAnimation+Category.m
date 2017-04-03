@@ -10,7 +10,6 @@
 
 @implementation CABasicAnimation (Category)
 
-#pragma mark === 永久闪烁的动画 ======
 + (CABasicAnimation *)zk_opacityForeverAnimation:(NSTimeInterval)time {
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     animation.fromValue = @1.f;

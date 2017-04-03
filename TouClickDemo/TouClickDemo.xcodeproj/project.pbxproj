@@ -20,14 +20,6 @@
 		588A6AEC1E8CF4CA00C11E48 /* TouClickDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 588A6AEB1E8CF4CA00C11E48 /* TouClickDemoUITests.m */; };
 		588A6B031E8CFCB500C11E48 /* TCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 588A6B011E8CFCB500C11E48 /* TCViewController.m */; };
 		588A6B071E8D095700C11E48 /* TCVerifyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 588A6B061E8D095700C11E48 /* TCVerifyButton.m */; };
-		588A6B1E1E8D0A2700C11E48 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 588A6B091E8D0A2700C11E48 /* 1.png */; };
-		588A6B1F1E8D0A2700C11E48 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 588A6B0A1E8D0A2700C11E48 /* 2.png */; };
-		588A6B201E8D0A2700C11E48 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 588A6B0B1E8D0A2700C11E48 /* 3.png */; };
-		588A6B211E8D0A2700C11E48 /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 588A6B0C1E8D0A2700C11E48 /* 4.png */; };
-		588A6B221E8D0A2700C11E48 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 588A6B0D1E8D0A2700C11E48 /* 5.png */; };
-		588A6B231E8D0A2700C11E48 /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = 588A6B0E1E8D0A2700C11E48 /* 6.png */; };
-		588A6B241E8D0A2700C11E48 /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = 588A6B0F1E8D0A2700C11E48 /* 7.png */; };
-		588A6B251E8D0A2700C11E48 /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = 588A6B101E8D0A2700C11E48 /* 8.png */; };
 		588A6B261E8D0A2700C11E48 /* bubble1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 588A6B111E8D0A2700C11E48 /* bubble1@2x.png */; };
 		588A6B271E8D0A2700C11E48 /* bubble2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 588A6B121E8D0A2700C11E48 /* bubble2@2x.png */; };
 		588A6B281E8D0A2700C11E48 /* close1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 588A6B131E8D0A2700C11E48 /* close1@2x.png */; };
@@ -46,6 +38,7 @@
 		588A6B3B1E8D2C2600C11E48 /* TCVerifyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 588A6B3A1E8D2C2600C11E48 /* TCVerifyView.xib */; };
 		588A6B3E1E8D327C00C11E48 /* icon_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 588A6B3C1E8D327C00C11E48 /* icon_refresh@2x.png */; };
 		588A6B3F1E8D327C00C11E48 /* icon_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 588A6B3D1E8D327C00C11E48 /* icon_close@2x.png */; };
+		58A7C84F1E928E9700B07E1A /* TCVerifyUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A7C84E1E928E9700B07E1A /* TCVerifyUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,14 +87,6 @@
 		588A6B011E8CFCB500C11E48 /* TCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCViewController.m; sourceTree = "<group>"; };
 		588A6B051E8D095700C11E48 /* TCVerifyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCVerifyButton.h; sourceTree = "<group>"; };
 		588A6B061E8D095700C11E48 /* TCVerifyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCVerifyButton.m; sourceTree = "<group>"; };
-		588A6B091E8D0A2700C11E48 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
-		588A6B0A1E8D0A2700C11E48 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
-		588A6B0B1E8D0A2700C11E48 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
-		588A6B0C1E8D0A2700C11E48 /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
-		588A6B0D1E8D0A2700C11E48 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
-		588A6B0E1E8D0A2700C11E48 /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6.png; sourceTree = "<group>"; };
-		588A6B0F1E8D0A2700C11E48 /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7.png; sourceTree = "<group>"; };
-		588A6B101E8D0A2700C11E48 /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8.png; sourceTree = "<group>"; };
 		588A6B111E8D0A2700C11E48 /* bubble1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble1@2x.png"; sourceTree = "<group>"; };
 		588A6B121E8D0A2700C11E48 /* bubble2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble2@2x.png"; sourceTree = "<group>"; };
 		588A6B131E8D0A2700C11E48 /* close1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close1@2x.png"; sourceTree = "<group>"; };
@@ -122,6 +107,8 @@
 		588A6B3A1E8D2C2600C11E48 /* TCVerifyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCVerifyView.xib; sourceTree = "<group>"; };
 		588A6B3C1E8D327C00C11E48 /* icon_refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_refresh@2x.png"; sourceTree = "<group>"; };
 		588A6B3D1E8D327C00C11E48 /* icon_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_close@2x.png"; sourceTree = "<group>"; };
+		58A7C84D1E928E9700B07E1A /* TCVerifyUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCVerifyUtil.h; sourceTree = "<group>"; };
+		58A7C84E1E928E9700B07E1A /* TCVerifyUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCVerifyUtil.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +222,8 @@
 				5859DB181E924B49000C2289 /* TCCheckModel.m */,
 				5859DB1A1E924B5D000C2289 /* TCVerifyModel.h */,
 				5859DB1B1E924B5D000C2289 /* TCVerifyModel.m */,
+				58A7C84D1E928E9700B07E1A /* TCVerifyUtil.h */,
+				58A7C84E1E928E9700B07E1A /* TCVerifyUtil.m */,
 				588A6B371E8D2C1000C11E48 /* TCVerifyView.h */,
 				588A6B381E8D2C1000C11E48 /* TCVerifyView.m */,
 				588A6B3A1E8D2C2600C11E48 /* TCVerifyView.xib */,
@@ -256,14 +245,6 @@
 			children = (
 				588A6B3C1E8D327C00C11E48 /* icon_refresh@2x.png */,
 				588A6B3D1E8D327C00C11E48 /* icon_close@2x.png */,
-				588A6B091E8D0A2700C11E48 /* 1.png */,
-				588A6B0A1E8D0A2700C11E48 /* 2.png */,
-				588A6B0B1E8D0A2700C11E48 /* 3.png */,
-				588A6B0C1E8D0A2700C11E48 /* 4.png */,
-				588A6B0D1E8D0A2700C11E48 /* 5.png */,
-				588A6B0E1E8D0A2700C11E48 /* 6.png */,
-				588A6B0F1E8D0A2700C11E48 /* 7.png */,
-				588A6B101E8D0A2700C11E48 /* 8.png */,
 				588A6B111E8D0A2700C11E48 /* bubble1@2x.png */,
 				588A6B121E8D0A2700C11E48 /* bubble2@2x.png */,
 				588A6B131E8D0A2700C11E48 /* close1@2x.png */,
@@ -402,26 +383,18 @@
 			files = (
 				588A6B3E1E8D327C00C11E48 /* icon_refresh@2x.png in Resources */,
 				588A6B291E8D0A2700C11E48 /* close2@2x.png in Resources */,
-				588A6B251E8D0A2700C11E48 /* 8.png in Resources */,
 				588A6B271E8D0A2700C11E48 /* bubble2@2x.png in Resources */,
 				588A6B2B1E8D0A2700C11E48 /* error@2x.png in Resources */,
 				588A6B261E8D0A2700C11E48 /* bubble1@2x.png in Resources */,
-				588A6B241E8D0A2700C11E48 /* 7.png in Resources */,
-				588A6B211E8D0A2700C11E48 /* 4.png in Resources */,
-				588A6B201E8D0A2700C11E48 /* 3.png in Resources */,
 				588A6B2E1E8D0A2700C11E48 /* logo-touclick@2x.png in Resources */,
 				588A6B2C1E8D0A2700C11E48 /* logo-b@2x.png in Resources */,
-				588A6B1E1E8D0A2700C11E48 /* 1.png in Resources */,
 				588A6B3F1E8D327C00C11E48 /* icon_close@2x.png in Resources */,
 				588A6AD61E8CF4C900C11E48 /* LaunchScreen.storyboard in Resources */,
 				588A6B311E8D0A2700C11E48 /* refresh1@2x.png in Resources */,
 				588A6B301E8D0A2700C11E48 /* OK@2x.png in Resources */,
-				588A6B221E8D0A2700C11E48 /* 5.png in Resources */,
 				588A6B281E8D0A2700C11E48 /* close1@2x.png in Resources */,
 				588A6B3B1E8D2C2600C11E48 /* TCVerifyView.xib in Resources */,
-				588A6B1F1E8D0A2700C11E48 /* 2.png in Resources */,
 				588A6B2F1E8D0A2700C11E48 /* logo-w@2x.png in Resources */,
-				588A6B231E8D0A2700C11E48 /* 6.png in Resources */,
 				588A6B2A1E8D0A2700C11E48 /* done@2x.png in Resources */,
 				588A6AD31E8CF4C900C11E48 /* Assets.xcassets in Resources */,
 				588A6B2D1E8D0A2700C11E48 /* logo-s@2x.png in Resources */,
@@ -457,6 +430,7 @@
 				588A6AC81E8CF4C900C11E48 /* main.m in Sources */,
 				5859DB191E924B49000C2289 /* TCCheckModel.m in Sources */,
 				588A6B391E8D2C1000C11E48 /* TCVerifyView.m in Sources */,
+				58A7C84F1E928E9700B07E1A /* TCVerifyUtil.m in Sources */,
 				58199A971E91FB5600352B1E /* CABasicAnimation+Category.m in Sources */,
 				5859DB1C1E924B5D000C2289 /* TCVerifyModel.m in Sources */,
 				588A6B071E8D095700C11E48 /* TCVerifyButton.m in Sources */,

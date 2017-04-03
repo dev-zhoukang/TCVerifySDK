@@ -10,6 +10,6 @@
 
 @interface TCVerifyButton : UIButton
 
-- (void)verifyBtnWithCompletion:(void (^ __nullable)( NSString * _Nullable token))completion;
+- (void)verifyCompletion:(void (^ __nullable)( NSString * _Nullable token))completion;
 
 @end

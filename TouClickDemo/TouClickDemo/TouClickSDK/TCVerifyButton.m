@@ -37,7 +37,7 @@ typedef void (^ZKSettingItemBlock)(NSString *token);
     return self;
 }
 
-- (void)verifyBtnWithCompletion:(void (^)(NSString * _Nullable))completion {
+- (void)verifyCompletion:(void (^)(NSString * _Nullable))completion {
     _completion = completion;
 }
 
