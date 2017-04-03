@@ -60,15 +60,45 @@
         
         NSString *subStr = [jsonStr componentsSeparatedByString:@"("][1];
         subStr = [subStr stringByReplacingOccurrencesOfString:@")" withString:@""];
+        subStr = [subStr stringByReplacingOccurrencesOfString:@";" withString:@""];
+        subStr = [self regularJsonString:subStr];
+        
         NSData *jsonData = [subStr dataUsingEncoding:NSUTF8StringEncoding];
         
-        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
+        NSError *myError;
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:&myError];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             !callback?:callback(nil, dict);
         });
     }];
     [task resume];
+}
+
+//把没有双引号和用了单引号的json字符串转化为标准格式字符串;
+- (NSString *)regularJsonString:(NSString *)json
+{
+    // 将没有双引号的替换成有双引号的
+    NSString *validString = [json stringByReplacingOccurrencesOfString:@"(\\w+)\\s*:([^A-Za-z0-9_])"
+                                                            withString:@"\"$1\":$2"
+                                                               options:NSRegularExpressionSearch
+                                                                 range:NSMakeRange(0, [json length])];
+    
+    validString = [validString stringByReplacingOccurrencesOfString:@"([:\\[,\\{])'"
+                                                         withString:@"$1\""
+                                                            options:NSRegularExpressionSearch
+                                                              range:NSMakeRange(0, [validString length])];
+    validString = [validString stringByReplacingOccurrencesOfString:@"'([:\\],\\}])"
+                                                         withString:@"\"$1"
+                                                            options:NSRegularExpressionSearch
+                                                              range:NSMakeRange(0, [validString length])];
+    
+    validString = [validString stringByReplacingOccurrencesOfString:@"([:\\[,\\{])(\\w+)\\s*:"
+                                                         withString:@"$1\"$2\":"
+                                                            options:NSRegularExpressionSearch
+                                                              range:NSMakeRange(0, [validString length])];
+    validString = [validString stringByReplacingOccurrencesOfString:@"\r\n" withString:@"\\r\\n"];
+    return validString;
 }
 
 - (NSString *)generateQueryStrWithParams:(NSDictionary *)params {

@@ -32,10 +32,17 @@ static const CGFloat kDefaultMargin = 15.f;
     [self setupViews];
 }
 
+
 - (void)setupViews {
     
     [self setupScrollView];
     [self setupLogoView];
+    
+    
+    unichar ch = 32 + 55;
+//    NSString *str =[NSString stringWithUTF8String:(char *)&ch];
+    NSString *str = [NSString stringWithFormat:@"%c", ch];
+    NSLog(@"====>%@", str);
     
     UIView *accountView = [self setupInputView:@"账户"];
     accountView.us_centerY = _contentView.us_centerY - 100.f;

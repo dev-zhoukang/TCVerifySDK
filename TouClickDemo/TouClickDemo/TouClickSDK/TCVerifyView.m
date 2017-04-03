@@ -11,6 +11,7 @@
 #import "TCNetManager.h"
 #import "ZKLoading.h"
 #import "TCGlobalHeader.h"
+#import "TCCheckModel.h"
 
 @interface TCVerifyView()
 
@@ -24,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *refreshBtn;
 @property (nonatomic, strong) NSMutableArray <UIView *> *bubbles;
 @property (nonatomic, assign) CGFloat                   scaling; // 缩放系数
+@property (nonatomic, copy) NSString *sid;
 
 @end
 
@@ -36,11 +38,25 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self setup];
-    [self requestData];
+    [self checkData];
+//    [self requestCaptcha];
+}
+//params.append(CheckUrl).append("cb=").append(cb).append("&b=").append(publicKey).append("&ran=")
+//.append(Math.random());
+- (void)checkData {
+    NSString *path = TCUrl_Check;
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"cb"] = [NSString stringWithFormat:@"beh%@", [self getSID]];
+    params[@"b"] = TCPublicKey;
+    params[@"ran"] = [NSString stringWithFormat:@"%f", TCRandom];
+    
+    [[TCNetManager shareInstance] getRequest:path params:params callback:^(NSError *error, NSDictionary *res) {
+        NSLog(@"===>%@", res);
+    }];
 }
 
-- (void)requestData {
-    NSString *path = @"http://cap-5-2-0.touclick.com/public/captcha";
+- (void)requestCaptcha {
+    NSString *path = TCUrl_Captcha;
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"cb"] = @"cb15B27852452D9PZS4X0N9U67IIGFC2H6";
@@ -89,7 +105,7 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
     
     NSString *base64Str = [b64Dict[@"baseStr"] copy];
     
-    NSInteger ran_count = (float)(1+arc4random()%99)/100 * 500;
+    NSInteger ran_count =  TCRandom * 500;
     NSInteger count_a = ([b64Dict[@"countA"] integerValue] - ran_count) % 4 + ran_count;
 
     for (int i = 0; i < count_a; i ++) {
@@ -178,7 +194,7 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
     
     btn.enabled = false;
     
-    [self requestData];
+    [self checkData];
 }
 
 - (IBAction)closeAction:(id)sender {
@@ -215,6 +231,28 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
     [[TCNetManager shareInstance] getRequest:path params:nil callback:^(NSError *error, NSDictionary *res) {
        NSLog(@"res ===> %@", res);
     }];
+}
+
+- (NSString *)getSID {
+    NSDate *date = [NSDate date];
+    NSString *timestamp = [NSString stringWithFormat:@"%.0f",[date timeIntervalSince1970]*1000.f];
+    NSString *hexString = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1lx",(long)[timestamp integerValue]]];
+    timestamp = [hexString uppercaseString];
+    NSInteger count = 32 - [timestamp length];
+    while (count --) {
+        int code = TCRandom * 36;
+        timestamp = [timestamp stringByAppendingString:[self getChar:code]];
+    }
+    return timestamp;
+}
+
+- (NSString *)getChar:(int)code {
+    if (code < 10) {
+        return [NSString stringWithFormat:@"%d", code];
+    }
+    int newCode = code + 55;
+    NSString *codeStr = [NSString stringWithUTF8String:(char *)&(newCode)];
+    return codeStr;
 }
 
 - (IBAction)submitBtnTouchDown:(UIButton *)btn {
