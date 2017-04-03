@@ -235,6 +235,7 @@
     
     if (!_bubbles.count) {
         NSLog(@"没有点击选择图片，验证失败");
+        [self verifyError];
         return;
     }
     
@@ -263,10 +264,7 @@
         TCVerifyModel *model = [TCVerifyModel modelWithDict:res];
         [self clearBubbles];
         if (!model.token) {
-            _topImageView.image = [UIImage imageNamed:@"error"];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self refreshAction:nil];
-            });
+            [self verifyError];
         }
         else {
             _topImageView.image = [UIImage imageNamed:@"OK"];
@@ -276,6 +274,13 @@
             });
         }
     }];
+}
+
+- (void)verifyError {
+    _topImageView.image = [UIImage imageNamed:@"error"];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self refreshAction:nil];
+    });
 }
 
 - (NSString *)getSID {
