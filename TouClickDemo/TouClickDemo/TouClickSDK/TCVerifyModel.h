@@ -10,4 +10,9 @@
 
 @interface TCVerifyModel : NSObject
 
+@property (nonatomic, copy) NSString *checkAddr;
+@property (nonatomic, copy) NSString *token;
+
++ (instancetype)modelWithDict:(NSDictionary *)dict;
+
 @end

@@ -10,4 +10,12 @@
 
 @implementation TCVerifyModel
 
++ (instancetype)modelWithDict:(NSDictionary *)dict {
+    TCVerifyModel *model = [TCVerifyModel new];
+    model.checkAddr = dict[@"checkAddress"];
+    model.token = dict[@"token"];
+    
+    return model;
+}
+
 @end

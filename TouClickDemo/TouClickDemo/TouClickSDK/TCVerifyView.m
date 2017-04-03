@@ -12,6 +12,7 @@
 #import "ZKLoading.h"
 #import "TCGlobalHeader.h"
 #import "TCCheckModel.h"
+#import "TCVerifyModel.h"
 
 @interface TCVerifyView()
 
@@ -28,6 +29,7 @@
 @property (nonatomic, copy) NSString *sid;
 @property (nonatomic, strong) TCCheckModel *checkModel;
 @property (nonatomic, copy) NSString *verifySid;
+@property (nonatomic, copy) void (^completion)(TCVerifyModel *);
 
 @end
 
@@ -42,9 +44,8 @@
 }
 
 - (void)checkDataAndThen:(void (^) ())callback {
-    _submitBtn.enabled = false;
-    _submitBtn.layer.borderColor = GlobalBlueColor_Disabled.CGColor;
-    
+
+    [self disableSubmitBtn:true];
     NSString *path = TCUrl_Check;
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"cb"] = [NSString stringWithFormat:@"beh%@", [self getSID]];
@@ -60,6 +61,11 @@
         _checkModel = [TCCheckModel modelWithDict:res];
         !callback?:callback();
     }];
+}
+
+- (void)disableSubmitBtn:(BOOL)disabled {
+    _submitBtn.enabled = !disabled;
+    _submitBtn.layer.borderColor = disabled ? GlobalBlueColor_Disabled.CGColor : GlobalBlueColor_Normal.CGColor;
 }
 
 - (void)requestCaptcha {
@@ -97,8 +103,7 @@
         }
         [ZKLoading hide];
         _refreshBtn.enabled = true;
-        _submitBtn.enabled = true;
-        _submitBtn.layer.borderColor = GlobalBlueColor_Normal.CGColor;
+        [self disableSubmitBtn:false];
     }];
 }
 
@@ -167,7 +172,7 @@
     [_bubbles removeObject:tap.view];
 }
 
-+ (instancetype)show {
++ (instancetype)showWithCompletion:(void (^)(TCVerifyModel *))completion {
     TCVerifyView *view = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil].lastObject;
     view.bgView.alpha = 0;
     [[UIApplication sharedApplication].keyWindow addSubview:view];
@@ -178,6 +183,8 @@
     view.containerView.layer.transform = CATransform3DMakeScale(.01f, .01f, 1.f);
     view.containerView.alpha = 0.0f;
     
+    view.completion = completion;
+    
     [UIView animateWithDuration:.02
                           delay:0.0 options:KeyboardAnimationCurve
                      animations:^{
@@ -185,9 +192,7 @@
                          view.containerView.layer.transform = CATransform3DIdentity;
                          view.containerView.alpha = 1.0f;
                          
-                     } completion:^(BOOL finished) {
-                         
-                     }];
+                     } completion:nil];
     
     return view;
 }
@@ -224,6 +229,8 @@
 
 - (IBAction)submitAction:(UIButton *)btn {
     btn.backgroundColor = [UIColor whiteColor];
+    [self disableSubmitBtn:true];
+    
     [btn setTitleColor:GlobalBlueColor_Normal forState:UIControlStateNormal];
     
     if (!_bubbles.count) {
@@ -253,6 +260,21 @@
     
     [[TCNetManager shareInstance] getRequest:path params:params callback:^(NSError *error, NSDictionary *res) {
        NSLog(@"verify res ===> %@", res);
+        TCVerifyModel *model = [TCVerifyModel modelWithDict:res];
+        [self clearBubbles];
+        if (!model.token) {
+            _topImageView.image = [UIImage imageNamed:@"error"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self refreshAction:nil];
+            });
+        }
+        else {
+            _topImageView.image = [UIImage imageNamed:@"OK"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self closeAction:nil];
+                !_completion?:_completion(model);
+            });
+        }
     }];
 }
 

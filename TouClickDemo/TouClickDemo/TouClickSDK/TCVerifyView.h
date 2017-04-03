@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class TCVerifyModel;
 
 @interface TCVerifyView : UIView
 
-+ (instancetype)show;
++ (instancetype)showWithCompletion:(void (^)(TCVerifyModel *verifyModel))completion;
 
 @end

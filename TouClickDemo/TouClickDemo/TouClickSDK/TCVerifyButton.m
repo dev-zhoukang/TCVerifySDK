@@ -10,10 +10,11 @@
 #import "UIView+Addition.h"
 #import "TCVerifyView.h"
 #import "TCGlobalHeader.h"
+#import "TCVerifyModel.h"
 
 @interface TCVerifyButton()
 
-typedef void (^ZKSettingItemBlock)(NSDictionary *cbData);
+typedef void (^ZKSettingItemBlock)(NSString *token);
 
 @property (nonatomic, copy) ZKSettingItemBlock completion;
 
@@ -35,7 +36,7 @@ typedef void (^ZKSettingItemBlock)(NSDictionary *cbData);
     return self;
 }
 
-- (void)verifyBtnWithCompletion:(void (^)(NSDictionary * _Nullable))completion {
+- (void)verifyBtnWithCompletion:(void (^)(NSString * _Nullable))completion {
     _completion = completion;
 }
 
@@ -64,7 +65,10 @@ typedef void (^ZKSettingItemBlock)(NSDictionary *cbData);
 - (void)clickAction {
     [[UIApplication sharedApplication].keyWindow endEditing:true];
     NSLog(@"start verify");
-    [TCVerifyView show];
+    
+    [TCVerifyView showWithCompletion:^(TCVerifyModel *verifyModel){
+        !_completion?:_completion(verifyModel.token);
+    }];
 }
 
 - (void)layoutSubviews {

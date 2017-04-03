@@ -52,9 +52,10 @@ static const CGFloat kDefaultMargin = 15.f;
     
     TCVerifyButton *verifyBtn = [[TCVerifyButton alloc] init];
     [_contentView addSubview:verifyBtn];
-    [verifyBtn verifyBtnWithCompletion:^(NSDictionary * _Nullable cbData) {
-        
+    [verifyBtn verifyBtnWithCompletion:^(NSString * _Nullable token) {
+        NSLog(@"验证成功, 获取到 tocken ==> %@", token);
     }];
+    
     verifyBtn.us_size = (CGSize){INPUTVIEW_WIDTH, 45.f};
     verifyBtn.us_centerX = verifyBtn.superview.us_centerX;
     verifyBtn.us_top = CGRectGetMaxY(pwdView.frame) + kDefaultMargin;
