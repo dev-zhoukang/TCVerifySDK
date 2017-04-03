@@ -81,7 +81,7 @@
         }
         _topImageView.image = [self generateImageWithBase64Str:[self restore:images[0]]];
         NSLog(@"oriImgSize ==> %@", NSStringFromCGSize(_topImageView.image.size));
-        _scaling = (_topImageView.image.size.width / [UIScreen mainScreen].scale) / _topImageView.us_width;
+        _scaling = (_topImageView.image.size.width / 2.f) / _topImageView.us_width;
         
         _thumbnailRightImageView.image = [self generateImageWithBase64Str:[self restore:images[1]]];
         if (images.count > 2) {
