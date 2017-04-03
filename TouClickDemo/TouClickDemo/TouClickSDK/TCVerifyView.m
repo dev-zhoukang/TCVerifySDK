@@ -9,6 +9,7 @@
 #import "TCVerifyView.h"
 #import "UIView+Addition.h"
 #import "TCNetManager.h"
+#import "ZKLoading.h"
 
 #define KeyboardAnimationCurve  7 << 16
 
@@ -47,7 +48,7 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
     params[@"ct"] = @"14";
     params[@"sid"] = @"4764d7ca-782b-434a-b0cb-5b775e16ad01";
     params[@"ran"] = @"0.07404862641221288";
-    
+    [ZKLoading showCircleView:_topImageView];
     [[TCNetManager shareInstance] getRequest:path params:params callback:^(NSError *error, NSDictionary *res) {
         
         if (error) {
@@ -71,6 +72,7 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
         else {
             _thumbnailLeftImageView.hidden = true;
         }
+        [ZKLoading hide];
     }];
 }
 
@@ -145,6 +147,7 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
     view.frame = [UIScreen mainScreen].bounds;
     
     view.topImgWidth.constant = 235.f * WindowZoomScale;
+    
     view.containerView.layer.transform = CATransform3DMakeScale(.01f, .01f, 1.f);
     view.containerView.alpha = 0.0f;
     
@@ -156,6 +159,7 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
                          view.containerView.alpha = 1.0f;
                          
                      } completion:^(BOOL finished) {
+                         
                      }];
     
     return view;

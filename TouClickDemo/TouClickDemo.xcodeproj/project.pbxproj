@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		58199A971E91FB5600352B1E /* CABasicAnimation+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 58199A931E91FB5600352B1E /* CABasicAnimation+Category.m */; };
+		58199A991E91FB5600352B1E /* ZKLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 58199A961E91FB5600352B1E /* ZKLoading.m */; };
 		5882AEB21E8FDACE000F5506 /* TCNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5882AEB11E8FDACE000F5506 /* TCNetManager.m */; };
 		588A6AC81E8CF4C900C11E48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 588A6AC71E8CF4C900C11E48 /* main.m */; };
 		588A6ACB1E8CF4C900C11E48 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 588A6ACA1E8CF4C900C11E48 /* AppDelegate.m */; };
@@ -62,6 +64,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		58199A921E91FB5600352B1E /* CABasicAnimation+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CABasicAnimation+Category.h"; sourceTree = "<group>"; };
+		58199A931E91FB5600352B1E /* CABasicAnimation+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CABasicAnimation+Category.m"; sourceTree = "<group>"; };
+		58199A951E91FB5600352B1E /* ZKLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKLoading.h; sourceTree = "<group>"; };
+		58199A961E91FB5600352B1E /* ZKLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKLoading.m; sourceTree = "<group>"; };
 		5882AEB01E8FDACE000F5506 /* TCNetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCNetManager.h; sourceTree = "<group>"; };
 		5882AEB11E8FDACE000F5506 /* TCNetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCNetManager.m; sourceTree = "<group>"; };
 		588A6AC31E8CF4C900C11E48 /* TouClickDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouClickDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +142,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		58199A911E91FB5600352B1E /* loading */ = {
+			isa = PBXGroup;
+			children = (
+				58199A921E91FB5600352B1E /* CABasicAnimation+Category.h */,
+				58199A931E91FB5600352B1E /* CABasicAnimation+Category.m */,
+				58199A951E91FB5600352B1E /* ZKLoading.h */,
+				58199A961E91FB5600352B1E /* ZKLoading.m */,
+			);
+			path = loading;
+			sourceTree = "<group>";
+		};
 		588A6ABA1E8CF4C900C11E48 = {
 			isa = PBXGroup;
 			children = (
@@ -255,6 +272,7 @@
 		588A6B331E8D0B9E00C11E48 /* support */ = {
 			isa = PBXGroup;
 			children = (
+				58199A911E91FB5600352B1E /* loading */,
 				588A6B341E8D0B9E00C11E48 /* UIView+Addition.h */,
 				588A6B351E8D0B9E00C11E48 /* UIView+Addition.m */,
 			);
@@ -421,10 +439,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				588A6B031E8CFCB500C11E48 /* TCViewController.m in Sources */,
+				58199A991E91FB5600352B1E /* ZKLoading.m in Sources */,
 				588A6B361E8D0B9E00C11E48 /* UIView+Addition.m in Sources */,
 				588A6ACB1E8CF4C900C11E48 /* AppDelegate.m in Sources */,
 				588A6AC81E8CF4C900C11E48 /* main.m in Sources */,
 				588A6B391E8D2C1000C11E48 /* TCVerifyView.m in Sources */,
+				58199A971E91FB5600352B1E /* CABasicAnimation+Category.m in Sources */,
 				588A6B071E8D095700C11E48 /* TCVerifyButton.m in Sources */,
 				5882AEB21E8FDACE000F5506 /* TCNetManager.m in Sources */,
 			);
