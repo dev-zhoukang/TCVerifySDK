@@ -9,6 +9,7 @@
 #import "TCViewController.h"
 #import "TCVerifyButton.h"
 #import "UIView+Addition.h"
+#import "TCGlobalHeader.h"
 
 #define INPUTVIEW_WIDTH  (230.f * WindowZoomScale)
 #define GRAY_COLOR       [UIColor colorWithRed:170/255.f green:170/255.f blue:170/255.f alpha:1]

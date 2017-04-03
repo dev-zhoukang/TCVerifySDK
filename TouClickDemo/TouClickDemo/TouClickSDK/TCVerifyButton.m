@@ -9,9 +9,7 @@
 #import "TCVerifyButton.h"
 #import "UIView+Addition.h"
 #import "TCVerifyView.h"
-
-#define BtnTintColor_Normal  [UIColor colorWithRed:63/255.f green:158/255.f blue:214/255.f alpha:1]
-#define BtnTintColor_HL      [UIColor colorWithRed:43/255.f green:138/255.f blue:194/255.f alpha:1]
+#import "TCGlobalHeader.h"
 
 @interface TCVerifyButton()
 
@@ -42,7 +40,7 @@ typedef void (^ZKSettingItemBlock)(NSDictionary *cbData);
 }
 
 - (void)setup {
-    self.backgroundColor = BtnTintColor_Normal;
+    self.backgroundColor = GlobalBlueColor_Normal;
     [self setImage:[UIImage imageNamed:@"logo-w"] forState:UIControlStateNormal];
     [self setTitle:@"点击进行认证" forState:UIControlStateNormal];
     self.titleLabel.font = [UIFont systemFontOfSize:15];
@@ -56,11 +54,11 @@ typedef void (^ZKSettingItemBlock)(NSDictionary *cbData);
 }
 
 - (void)touchUp {
-    self.backgroundColor = BtnTintColor_Normal;
+    self.backgroundColor = GlobalBlueColor_Normal;
 }
 
 - (void)touchDown {
-    self.backgroundColor = BtnTintColor_HL;
+    self.backgroundColor = GlobalBlueColor_HL;
 }
 
 - (void)clickAction {

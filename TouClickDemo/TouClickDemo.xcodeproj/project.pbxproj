@@ -68,6 +68,7 @@
 		58199A931E91FB5600352B1E /* CABasicAnimation+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CABasicAnimation+Category.m"; sourceTree = "<group>"; };
 		58199A951E91FB5600352B1E /* ZKLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKLoading.h; sourceTree = "<group>"; };
 		58199A961E91FB5600352B1E /* ZKLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKLoading.m; sourceTree = "<group>"; };
+		58199A9A1E9207DD00352B1E /* TCGlobalHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCGlobalHeader.h; sourceTree = "<group>"; };
 		5882AEB01E8FDACE000F5506 /* TCNetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCNetManager.h; sourceTree = "<group>"; };
 		5882AEB11E8FDACE000F5506 /* TCNetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCNetManager.m; sourceTree = "<group>"; };
 		588A6AC31E8CF4C900C11E48 /* TouClickDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouClickDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -217,6 +218,7 @@
 		588A6AF91E8CF5F300C11E48 /* TouClickSDK */ = {
 			isa = PBXGroup;
 			children = (
+				58199A9A1E9207DD00352B1E /* TCGlobalHeader.h */,
 				588A6B331E8D0B9E00C11E48 /* support */,
 				588A6B081E8D0A2700C11E48 /* images */,
 				588A6B051E8D095700C11E48 /* TCVerifyButton.h */,

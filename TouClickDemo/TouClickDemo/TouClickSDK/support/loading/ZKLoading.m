@@ -59,6 +59,10 @@ static ZKLoading *loadView;
 
 + (void)showCircleView:(UIView *)view {
 
+    if (loadView) {
+        return;
+    }
+    
     loadView = [[ZKLoading alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(view.frame), CGRectGetHeight(view.frame)) type:ZKLoadingCircle];
     loadView.layer.cornerRadius = 5.f;
     loadView.backgroundColor = [UIColor whiteColor];
@@ -79,6 +83,7 @@ static ZKLoading *loadView;
             loadView.alpha = 0;
         } completion:^(BOOL finished) {
             [loadView removeFromSuperview];
+            loadView = nil;
         }];
     }
 }

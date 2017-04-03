@@ -10,8 +10,7 @@
 #import "UIView+Addition.h"
 #import "TCNetManager.h"
 #import "ZKLoading.h"
-
-#define KeyboardAnimationCurve  7 << 16
+#import "TCGlobalHeader.h"
 
 @interface TCVerifyView()
 
@@ -22,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView        *topImageView;
 @property (weak, nonatomic) IBOutlet UIImageView        *thumbnailLeftImageView;
 @property (weak, nonatomic) IBOutlet UIImageView        *thumbnailRightImageView;
+@property (weak, nonatomic) IBOutlet UIButton *refreshBtn;
 @property (nonatomic, strong) NSMutableArray <UIView *> *bubbles;
 @property (nonatomic, assign) CGFloat                   scaling; // 缩放系数
 
@@ -73,6 +73,9 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
             _thumbnailLeftImageView.hidden = true;
         }
         [ZKLoading hide];
+        _refreshBtn.enabled = true;
+        _submitBtn.enabled = true;
+        _submitBtn.layer.borderColor = GlobalBlueColor_Normal.CGColor;
     }];
 }
 
@@ -110,8 +113,11 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
     
     _submitBtn.clipsToBounds = true;
     _submitBtn.layer.cornerRadius = 15.f;
-    _submitBtn.layer.borderColor = [UIColor colorWithRed:31/255.f green:140/255.f blue:194/255.f alpha:1.f].CGColor;
+    _submitBtn.layer.borderColor = GlobalBlueColor_Disabled.CGColor;
     _submitBtn.layer.borderWidth = 1.f;
+    [_submitBtn setTitleColor:GlobalBlueColor_Normal forState:UIControlStateNormal];
+    [_submitBtn setTitleColor:GlobalBlueColor_Disabled forState:UIControlStateDisabled];
+    _submitBtn.enabled = false;
     
     _topImageView.userInteractionEnabled = true;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTopImageViewTap:)];
@@ -165,10 +171,13 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
     return view;
 }
 
-- (IBAction)refreshAction {
+- (IBAction)refreshAction:(UIButton *)btn {
     if (_bubbles.count) {
         [_bubbles removeAllObjects];
     }
+    
+    btn.enabled = false;
+    
     [self requestData];
 }
 
@@ -183,7 +192,9 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
                      }];
 }
 
-- (IBAction)submitAction:(id)sender {
+- (IBAction)submitAction:(UIButton *)btn {
+    btn.backgroundColor = [UIColor whiteColor];
+    [btn setTitleColor:GlobalBlueColor_Normal forState:UIControlStateNormal];
     
     if (!_bubbles.count) {
         NSLog(@"没有点击选择图片，验证失败");
@@ -204,6 +215,15 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
     [[TCNetManager shareInstance] getRequest:path params:nil callback:^(NSError *error, NSDictionary *res) {
        NSLog(@"res ===> %@", res);
     }];
+}
+
+- (IBAction)submitBtnTouchDown:(UIButton *)btn {
+    btn.backgroundColor = GlobalBlueColor_Normal;
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+}
+
+- (void)dealloc {
+    NSLog(@"VerityView delloc");
 }
 
 @end

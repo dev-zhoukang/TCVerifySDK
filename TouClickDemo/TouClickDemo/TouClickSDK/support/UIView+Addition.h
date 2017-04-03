@@ -10,10 +10,6 @@
 
 @interface UIView (Addition)
 
-#define SCREEN_HEIGHT        ([[UIScreen mainScreen] bounds].size.height)
-#define SCREEN_WIDTH         ([[UIScreen mainScreen] bounds].size.width)
-#define WindowZoomScale      (SCREEN_WIDTH/320.f)
-
 @property (nonatomic) CGFloat us_left;
 
 @property (nonatomic) CGFloat us_top;
