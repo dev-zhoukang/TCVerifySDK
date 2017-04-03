@@ -42,12 +42,16 @@
 }
 
 - (void)checkDataAndThen:(void (^) ())callback {
+    _submitBtn.enabled = false;
+    _submitBtn.layer.borderColor = GlobalBlueColor_Disabled.CGColor;
+    
     NSString *path = TCUrl_Check;
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"cb"] = [NSString stringWithFormat:@"beh%@", [self getSID]];
     params[@"b"] = TCPublicKey;
     params[@"ran"] = [NSString stringWithFormat:@"%f", TCRandom];
     [ZKLoading showCircleView:_topImageView];
+    
     [[TCNetManager shareInstance] getRequest:path params:params callback:^(NSError *error, NSDictionary *res) {
         if (error) {
             NSLog(@"%@", error);
@@ -132,11 +136,9 @@
     
     _submitBtn.clipsToBounds = true;
     _submitBtn.layer.cornerRadius = 15.f;
-    _submitBtn.layer.borderColor = GlobalBlueColor_Disabled.CGColor;
     _submitBtn.layer.borderWidth = 1.f;
     [_submitBtn setTitleColor:GlobalBlueColor_Normal forState:UIControlStateNormal];
     [_submitBtn setTitleColor:GlobalBlueColor_Disabled forState:UIControlStateDisabled];
-    _submitBtn.enabled = false;
     
     _topImageView.userInteractionEnabled = true;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTopImageViewTap:)];
