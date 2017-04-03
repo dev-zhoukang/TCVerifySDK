@@ -10,7 +10,7 @@
 #import "TCVerifyButton.h"
 #import "UIView+Addition.h"
 
-#define INPUTVIEW_WIDTH  (250.f * WindowZoomScale)
+#define INPUTVIEW_WIDTH  (230.f * WindowZoomScale)
 #define GRAY_COLOR       [UIColor colorWithRed:170/255.f green:170/255.f blue:170/255.f alpha:1]
 
 @interface TCViewController ()
@@ -21,6 +21,8 @@
 @property (nonatomic, strong) UIButton    *loginBtn;
 
 @end
+
+static const CGFloat kDefaultMargin = 15.f;
 
 @implementation TCViewController
 
@@ -38,7 +40,7 @@
     accountView.us_centerY = _contentView.us_centerY - 100.f;
     
     UIView *pwdView = [self setupInputView:@"密码"];
-    pwdView.us_top = CGRectGetMaxY(accountView.frame) + 10.f;
+    pwdView.us_top = CGRectGetMaxY(accountView.frame) + kDefaultMargin;
     
     TCVerifyButton *verifyBtn = [[TCVerifyButton alloc] init];
     [_contentView addSubview:verifyBtn];
@@ -47,7 +49,7 @@
     }];
     verifyBtn.us_size = (CGSize){INPUTVIEW_WIDTH, 45.f};
     verifyBtn.us_centerX = verifyBtn.superview.us_centerX;
-    verifyBtn.us_top = CGRectGetMaxY(pwdView.frame) + 10.f;
+    verifyBtn.us_top = CGRectGetMaxY(pwdView.frame) + kDefaultMargin;
     
     UIButton *loginBtn = [[UIButton alloc] init];
     [_contentView addSubview:loginBtn];
@@ -55,7 +57,7 @@
     loginBtn.backgroundColor = GRAY_COLOR;
     loginBtn.us_size = (CGSize){INPUTVIEW_WIDTH, 50.f};
     loginBtn.us_centerX = loginBtn.superview.us_centerX;
-    loginBtn.us_top = CGRectGetMaxY(verifyBtn.frame) + 10.f;
+    loginBtn.us_top = CGRectGetMaxY(verifyBtn.frame) + kDefaultMargin;
     loginBtn.layer.cornerRadius = 5.f;
     [loginBtn setShowsTouchWhenHighlighted:true];
     [loginBtn addTarget:self action:@selector(loginAction) forControlEvents:UIControlEventTouchUpInside];

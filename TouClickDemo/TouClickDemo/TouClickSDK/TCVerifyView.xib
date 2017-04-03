@@ -18,7 +18,7 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4fD-h3-2p9" userLabel="Bg View">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.21168664383561644" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.37591419665251785" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vk9-wj-5yu" userLabel="Container View">
                     <rect key="frame" x="34" y="195.5" width="307" height="275"/>

@@ -39,10 +39,16 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
 }
 
 - (void)requestData {
+    NSString *path = @"http://cap-5-2-0.touclick.com/public/captcha";
     
-    NSString *path = @"http://cap-5-2-0.touclick.com/public/captcha?cb=cb15B27852452D9PZS4X0N9U67IIGFC2H6&b=45f5b905-4d15-41ca-ba4b-3a8612fc43cf&ct=14&sid=4764d7ca-782b-434a-b0cb-5b775e16ad01&ran=0.07404862641221288";
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"cb"] = @"cb15B27852452D9PZS4X0N9U67IIGFC2H6";
+    params[@"b"] = @"45f5b905-4d15-41ca-ba4b-3a8612fc43cf";
+    params[@"ct"] = @"14";
+    params[@"sid"] = @"4764d7ca-782b-434a-b0cb-5b775e16ad01";
+    params[@"ran"] = @"0.07404862641221288";
     
-    [[TCNetManager shareInstance] getRequest:path params:nil callback:^(NSError *error, NSDictionary *res) {
+    [[TCNetManager shareInstance] getRequest:path params:params callback:^(NSError *error, NSDictionary *res) {
         
         if (error) {
             NSLog(@"%@", error);
@@ -142,7 +148,7 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
     view.containerView.layer.transform = CATransform3DMakeScale(.01f, .01f, 1.f);
     view.containerView.alpha = 0.0f;
     
-    [UIView animateWithDuration:.2
+    [UIView animateWithDuration:.02
                           delay:0.0 options:KeyboardAnimationCurve
                      animations:^{
                          view.bgView.alpha = 1;
@@ -163,7 +169,7 @@ static NSString *const requestCaptchaUrl = @"http://cap-5-2-0.touclick.com/publi
 }
 
 - (IBAction)closeAction:(id)sender {
-    [UIView animateWithDuration:.12
+    [UIView animateWithDuration:.02
                           delay:0.0 options:KeyboardAnimationCurve
                      animations:^{
                          self.containerView.layer.transform = CATransform3DMakeScale(.001, .001, 1.f);

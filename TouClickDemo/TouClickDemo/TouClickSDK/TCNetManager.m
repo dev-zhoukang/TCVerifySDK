@@ -29,13 +29,14 @@
             params:(NSDictionary *)params
           callback:(void (^)(NSError *error, NSDictionary *res))callback {
     
-    NSURL *url = nil;
-    if ([urlStr isKindOfClass:[NSURL class]]) {
-        url = (NSURL *)urlStr;
-    }
-    else {
-        url = [NSURL URLWithString:urlStr];
-    }
+    NSCAssert([urlStr isKindOfClass:[NSString class]], @"urlStr must be kind of string");
+    
+    NSString *queryStr = [self generateQueryStrWithParams: params];
+    NSString *fullUrlStr = urlStr.copy;
+    fullUrlStr = [urlStr stringByAppendingString:queryStr];
+    
+    NSURL *url = [NSURL URLWithString:fullUrlStr];
+    
     _session = [NSURLSession sharedSession];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
@@ -53,6 +54,7 @@
             NSError *error = [NSError errorWithDomain:@"com.zk" code:0 userInfo:@{@"message": @"解析 jsonStr 为空"}];
             
             !callback?:callback(error, nil);
+            [self getRequest:urlStr params:params callback:callback];
             return;
         }
         
@@ -67,6 +69,22 @@
         });
     }];
     [task resume];
+}
+
+- (NSString *)generateQueryStrWithParams:(NSDictionary *)params {
+    NSString *queryStr = @"";
+    NSArray *keys = params.allKeys;
+    for (int i = 0; i < keys.count; i ++) {
+        NSString *key = keys[i];
+        if (i == 0) {
+            queryStr = [NSString stringWithFormat:@"?%@=%@", key, params[key]];
+        }
+        else {
+            NSString *str = [NSString stringWithFormat:@"&%@=%@", key, params[key]];
+            queryStr = [queryStr stringByAppendingString:str];
+        }
+    }
+    return queryStr;
 }
 
 - (void)dealloc {
