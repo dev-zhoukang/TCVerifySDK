@@ -156,6 +156,8 @@
     [_topImageView addGestureRecognizer:tap];
     
     _containerView.layer.cornerRadius = 6.f;
+    
+    [_bgView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeAction:)]];
 }
 
 - (void)handleTopImageViewTap:(UIGestureRecognizer *)tap {
