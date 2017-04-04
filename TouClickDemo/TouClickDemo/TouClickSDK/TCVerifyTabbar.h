@@ -14,8 +14,11 @@
  添加到指定视图上 不需设置 frame, 自动布局到父视图底部
 
  @param view superview
+ @param callback 选择类型后的回调函数
  @return 实例对象
  */
++ (instancetype)showTabbarOnView:(UIView *)view
+              selectTypeCallback:(void (^)(NSString *ct))callback;
 + (instancetype)showTabbarOnView:(UIView *)view;
 
 /**

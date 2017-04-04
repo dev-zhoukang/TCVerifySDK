@@ -33,7 +33,8 @@ NSString *selectedType_;
 @interface TCVerifyTabbar()
 
 @property (nonatomic, copy) NSArray <TCVerify *> *dataSource;
-@property (nonatomic, strong) UIButton *selectedBtn;
+@property (nonatomic, strong) UIButton           *selectedBtn;
+@property (nonatomic, copy) void(^callback)(NSString *ct);
 
 @end
 
@@ -53,8 +54,16 @@ NSString *selectedType_;
     return self;
 }
 
+#pragma mark - Public
+
 + (instancetype)showTabbarOnView:(UIView *)view {
+    return [self showTabbarOnView:view selectTypeCallback:nil];
+}
+
++ (instancetype)showTabbarOnView:(UIView *)view
+              selectTypeCallback:(void (^)(NSString *))callback {
     TCVerifyTabbar *tabbar = [TCVerifyTabbar new];
+    tabbar.callback = callback;
     [view addSubview:tabbar];
     return tabbar;
 }
@@ -129,6 +138,13 @@ NSString *selectedType_;
 
     TCVerify *model = _dataSource[btn.tag];
     selectedType_ = model.ct;
+    
+    !_callback?:_callback(model.ct);
+}
+
+- (void)setCallback:(void (^)(NSString *))callback {
+    _callback = callback;
+    !_callback?:_callback(selectedType_);
 }
 
 + (NSString *)getSelectdType {

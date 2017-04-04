@@ -33,7 +33,6 @@ static const CGFloat kDefaultMargin = 15.f;
     [self setupViews];
 }
 
-
 - (void)setupViews {
     
     [self setupScrollView];

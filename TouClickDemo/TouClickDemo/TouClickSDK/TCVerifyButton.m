@@ -70,15 +70,17 @@ typedef void (^ZKSettingItemBlock)(NSString *token);
 - (void)clickAction {
     [[UIApplication sharedApplication].keyWindow endEditing:true];
     DLog(@"start verify");
-    
-    if (_passed) {
-        [self setTitle:@"已验证通过" forState:UIControlStateNormal];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self setTitle:@"验证成功" forState:UIControlStateNormal];
-            self.backgroundColor = [UIColor colorWithRed:80/255.f green:174/255.f blue:85/255.f alpha:1];
-        });
-        return;
-    }
+    [self setSucceeStyle:false];
+    /*
+     if (_passed) {
+     [self setTitle:@"已验证通过" forState:UIControlStateNormal];
+     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+     [self setTitle:@"验证成功" forState:UIControlStateNormal];
+     self.backgroundColor = [UIColor colorWithRed:80/255.f green:174/255.f blue:85/255.f alpha:1];
+     });
+     return;
+     }
+     */
     
     NSString *ct = [TCVerifyTabbar getSelectdType];
     [TCVerifyView showWithCt:ct Completion:^(TCVerifyModel *verifyModel) {
@@ -86,16 +88,33 @@ typedef void (^ZKSettingItemBlock)(NSString *token);
         if (verifyModel) {
             !_completion?:_completion(verifyModel.token);
             
-            [UIView animateWithDuration:.8f animations:^{
-                self.backgroundColor = [UIColor colorWithRed:80/255.f green:174/255.f blue:85/255.f alpha:1];
-                [self setTitle:@"验证成功" forState:UIControlStateNormal];
-                _passed = true;
-            }];
+            [self setSucceeStyle:true];
         }
         else {
             !_completion?:_completion(nil);
         }
     }];
+}
+
+- (void)setSucceeStyle:(BOOL)success {
+    
+    void(^animations)() = nil;
+    
+    if (success) {
+        animations = ^() {
+            self.backgroundColor = [UIColor colorWithRed:80/255.f green:174/255.f blue:85/255.f alpha:1];
+            [self setTitle:@"验证成功" forState:UIControlStateNormal];
+            _passed = true;
+        };
+    }
+    else {
+        animations = ^() {
+            self.backgroundColor = GlobalBlueColor_Normal;
+            [self setTitle:@"点击进行认证" forState:UIControlStateNormal];
+            _passed = false;
+        };
+    }
+    [UIView animateWithDuration:.8f animations:animations];
 }
 
 - (void)layoutSubviews {

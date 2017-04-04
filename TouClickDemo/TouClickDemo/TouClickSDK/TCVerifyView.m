@@ -130,6 +130,15 @@
     for (NSString *key in res[@"data"]) {
         [images addObject:res[@"data"][key]];
     }
+    
+    if (![images[0] isKindOfClass:[NSDictionary class]]) {
+        [self checkDataAndThen:^{
+            [self requestCaptcha];
+        }];
+        
+        return;
+    }
+    
     _topImageView.image = [TCVerifyUtil generateImageWithBase64Dict:images[0]];
     
     _thumbnailRightImageView.image = [TCVerifyUtil generateImageWithBase64Dict:images[1]];
