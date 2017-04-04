@@ -10,6 +10,7 @@
 #import "TCVerifyButton.h"
 #import "UIView+Addition.h"
 #import "TCGlobalHeader.h"
+#import "TCVerifyTabbar.h"
 
 #define INPUTVIEW_WIDTH  (230.f * WindowZoomScale)
 #define GRAY_COLOR       [UIColor colorWithRed:170/255.f green:170/255.f blue:170/255.f alpha:1]
@@ -37,6 +38,7 @@ static const CGFloat kDefaultMargin = 15.f;
     
     [self setupScrollView];
     [self setupLogoView];
+    [TCVerifyTabbar showTabbarOnView:self.view];
     
     UIView *accountView = [self setupInputView:@"账户"];
     accountView.us_centerY = _contentView.us_centerY - 100.f;

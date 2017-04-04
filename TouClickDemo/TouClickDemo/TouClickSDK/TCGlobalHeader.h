@@ -9,6 +9,8 @@
 #ifndef TCGlobalHeader_h
 #define TCGlobalHeader_h
 
+#import "UIView+Addition.h"
+
 #define TCPublicKey   @"45f5b905-4d15-41ca-ba4b-3a8612fc43cf"
 #define TCUrl_Check   @"http://cap-5-2-0.touclick.com/public/check"
 #define TCUrl_Captcha @"http://cap-5-2-0.touclick.com/public/captcha"
@@ -24,5 +26,7 @@
 
 #define KeyboardAnimationCurve  7 << 16
 #define TCRandom  ((CGFloat)(1+arc4random()%99)/100) // 0 ~ 1
+
+#define HexColor(hexValue)   [UIColor colorWithRed:((float)(((hexValue) & 0xFF0000) >> 16))/255.0 green:((float)(((hexValue) & 0xFF00) >> 8))/255.0 blue:((float)((hexValue) & 0xFF))/255.0 alpha:1]
 
 #endif /* TCGlobalHeader_h */
