@@ -78,14 +78,15 @@ static ZKLoading *loadView;
 
 + (void)hide {
     
-    if (loadView) {
-        [UIView animateWithDuration:.25 animations:^{
-            loadView.alpha = 0;
-        } completion:^(BOOL finished) {
-            [loadView removeFromSuperview];
-            loadView = nil;
-        }];
+    if (!loadView) {
+        return;
     }
+    [UIView animateWithDuration:.25 animations:^{
+        loadView.alpha = 0;
+    } completion:^(BOOL finished) {
+        [loadView removeFromSuperview];
+        loadView = nil;
+    }];
 }
 
 #pragma mark - private method

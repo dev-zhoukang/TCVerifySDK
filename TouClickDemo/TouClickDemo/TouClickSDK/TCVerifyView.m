@@ -200,6 +200,7 @@
 }
 
 - (IBAction)closeAction:(id)sender {
+    [ZKLoading hide];
     [UIView animateWithDuration:.02
                           delay:0.0 options:KeyboardAnimationCurve
                      animations:^{
