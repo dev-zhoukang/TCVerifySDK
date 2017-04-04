@@ -82,13 +82,19 @@ typedef void (^ZKSettingItemBlock)(NSString *token);
     
     NSString *ct = [TCVerifyTabbar getSelectdType];
     [TCVerifyView showWithCt:ct Completion:^(TCVerifyModel *verifyModel) {
-        !_completion?:_completion(verifyModel.token);
         
-        [UIView animateWithDuration:.8f animations:^{
-            self.backgroundColor = [UIColor colorWithRed:80/255.f green:174/255.f blue:85/255.f alpha:1];
-            [self setTitle:@"验证成功" forState:UIControlStateNormal];
-            _passed = true;
-        }];
+        if (verifyModel) {
+            !_completion?:_completion(verifyModel.token);
+            
+            [UIView animateWithDuration:.8f animations:^{
+                self.backgroundColor = [UIColor colorWithRed:80/255.f green:174/255.f blue:85/255.f alpha:1];
+                [self setTitle:@"验证成功" forState:UIControlStateNormal];
+                _passed = true;
+            }];
+        }
+        else {
+            !_completion?:_completion(nil);
+        }
     }];
 }
 

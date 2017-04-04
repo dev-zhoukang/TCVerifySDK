@@ -247,6 +247,7 @@
         TCVerifyModel *model = [TCVerifyModel modelWithDict:res];
         [self clearBubbles];
         if (!model.token) {
+            !_completion?:_completion(nil);
             [self verifyError];
         }
         else {

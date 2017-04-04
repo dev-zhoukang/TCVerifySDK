@@ -10,7 +10,6 @@
 
 @interface TCVerifyButton : UIButton
 
-
 /**
  验证按钮的 block 回调
  

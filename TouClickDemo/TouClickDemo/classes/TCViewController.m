@@ -49,7 +49,12 @@ static const CGFloat kDefaultMargin = 15.f;
     TCVerifyButton *verifyBtn = [[TCVerifyButton alloc] init];
     [_contentView addSubview:verifyBtn];
     [verifyBtn verifyCompletion:^(NSString * _Nullable token) {
-        DLog(@"验证成功, 获取到 tocken ==> %@", token);
+        if (token) {
+            DLog(@"验证成功, 获取到 tocken ==> %@", token);
+        }
+        else {
+            DLog(@"验证失败");
+        }
     }];
     
     verifyBtn.us_size = (CGSize){INPUTVIEW_WIDTH, 45.f};
@@ -126,7 +131,7 @@ static const CGFloat kDefaultMargin = 15.f;
     field.us_origin = (CGPoint){CGRectGetMaxX(titleLabel.frame), 0};
     field.us_size = (CGSize){CGRectGetWidth(view.frame) - CGRectGetMaxX(titleLabel.frame) - 10.f, 30};
     field.us_centerY = view.us_centerY + 1.f;
-    field.font = [UIFont systemFontOfSize:14.f];
+    field.font = [UIFont systemFontOfSize:15.f];
     field.clipsToBounds = true;
     field.clearButtonMode = UITextFieldViewModeWhileEditing;
     field.placeholder = @"测试请随意填写";
