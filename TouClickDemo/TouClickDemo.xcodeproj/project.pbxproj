@@ -215,6 +215,7 @@
 				58A7C8CF1E933EA200B07E1A /* images */,
 				58A7C8DF1E933EA200B07E1A /* model */,
 				58A7C8E41E933EA200B07E1A /* support */,
+				58A7C8F21E933EA200B07E1A /* util */,
 				58A7C8EC1E933EA200B07E1A /* TCGlobalHeader.h */,
 				58A7C9101E933EE400B07E1A /* TCVerifyTabbar.h */,
 				58A7C9111E933EE400B07E1A /* TCVerifyTabbar.m */,
@@ -223,7 +224,6 @@
 				58A7C8EF1E933EA200B07E1A /* TCVerifyView.h */,
 				58A7C8F01E933EA200B07E1A /* TCVerifyView.m */,
 				58A7C8F11E933EA200B07E1A /* TCVerifyView.xib */,
-				58A7C8F21E933EA200B07E1A /* util */,
 			);
 			path = TouClickSDK;
 			sourceTree = "<group>";

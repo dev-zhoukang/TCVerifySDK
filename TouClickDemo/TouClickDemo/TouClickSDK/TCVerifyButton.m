@@ -69,7 +69,7 @@ typedef void (^ZKSettingItemBlock)(NSString *token);
 
 - (void)clickAction {
     [[UIApplication sharedApplication].keyWindow endEditing:true];
-    NSLog(@"start verify");
+    DLog(@"start verify");
     
     if (_passed) {
         [self setTitle:@"已验证通过" forState:UIControlStateNormal];

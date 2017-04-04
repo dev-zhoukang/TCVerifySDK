@@ -79,7 +79,7 @@
     
     [[TCNetManager shareInstance] getRequest:path params:params callback:^(NSError *error, NSDictionary *res) {
         if (error) {
-            NSLog(@"%@", error);
+            DLog(@"%@", error);
             return;
         }
         _checkModel = [TCCheckModel modelWithDict:res];
@@ -104,7 +104,7 @@
     [[TCNetManager shareInstance] getRequest:path params:params callback:^(NSError *error, NSDictionary *res) {
         
         if (error) {
-            NSLog(@"%@", error);
+            DLog(@"%@", error);
             return;
         }
         _verifySid = res[@"sid"];
@@ -119,7 +119,7 @@
 
 - (void)calculateScaling {
     CGSize oriImgSize = _topImageView.image.size;
-    NSLog(@"oriImgSize ==> %@", NSStringFromCGSize(oriImgSize));
+    DLog(@"oriImgSize ==> %@", NSStringFromCGSize(oriImgSize));
     
     CGFloat oriImgWidth = oriImgSize.width > SCREEN_WIDTH ? oriImgSize.width / 2 : oriImgSize.width;
     _scaling = oriImgWidth / _topImageView.us_width;
@@ -160,7 +160,7 @@
 
 - (void)handleTopImageViewTap:(UIGestureRecognizer *)tap {
     CGPoint location = [tap locationInView:tap.view];
-    NSLog(@"add location ==> %@", NSStringFromCGPoint(location));
+    DLog(@"add location ==> %@", NSStringFromCGPoint(location));
     
     UIImageView *bubbleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bubble2"]];
     CGSize bubbleSize = bubbleView.us_size;
@@ -173,7 +173,7 @@
 }
 
 - (void)handleBubbleTap:(UIGestureRecognizer *)tap {
-    NSLog(@"delete location ==> %@", NSStringFromCGPoint(tap.view.center));
+    DLog(@"delete location ==> %@", NSStringFromCGPoint(tap.view.center));
     [tap.view removeFromSuperview];
     [_bubbles removeObject:tap.view];
 }
@@ -216,7 +216,7 @@
     [btn setTitleColor:GlobalBlueColor_Normal forState:UIControlStateNormal];
     
     if (!_bubbles.count) {
-        NSLog(@"没有点击选择图片，验证失败");
+        DLog(@"没有点击选择图片，验证失败");
         [self verifyError];
         return;
     }
@@ -229,7 +229,7 @@
     
     locationStr = [locationStr substringToIndex:locationStr.length - 1];
     
-    NSLog(@"locationStr ==> %@", locationStr);
+    DLog(@"locationStr ==> %@", locationStr);
 
     NSString *path = TCUrl_Verify;
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -242,7 +242,7 @@
     params[@"ct"] = self.ct?:@"13";
     
     [[TCNetManager shareInstance] getRequest:path params:params callback:^(NSError *error, NSDictionary *res) {
-       NSLog(@"verify res ===> %@", res);
+       DLog(@"verify res ===> %@", res);
         TCVerifyModel *model = [TCVerifyModel modelWithDict:res];
         [self clearBubbles];
         if (!model.token) {
@@ -271,7 +271,7 @@
 }
 
 - (void)dealloc {
-    NSLog(@"VerityView delloc");
+    DLog(@"VerityView delloc");
 }
 
 @end

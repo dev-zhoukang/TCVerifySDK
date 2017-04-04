@@ -126,7 +126,7 @@ NSString *selectedType_;
     [self highlightBtn:btn];
     [self resumeBtn:_selectedBtn];
     _selectedBtn = btn;
-    
+
     TCVerify *model = _dataSource[btn.tag];
     selectedType_ = model.ct;
 }

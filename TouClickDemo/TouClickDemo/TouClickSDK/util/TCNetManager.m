@@ -7,6 +7,7 @@
 //
 
 #import "TCNetManager.h"
+#import "TCGlobalHeader.h"
 
 @interface TCNetManager()
 
@@ -42,7 +43,7 @@
     
     NSURLSessionDataTask *task = [_session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error) {
-            NSLog(@"请求失败 ==> %@", error);
+            DLog(@"请求失败 ==> %@", error);
             !callback?:callback(error, nil);
             return;
         }
@@ -50,7 +51,7 @@
         NSString *jsonStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         
         if (!jsonStr.length) {
-            NSLog(@"解析 jsonStr 为空");
+            DLog(@"解析 jsonStr 为空, 重新发起请求");
             NSError *error = [NSError errorWithDomain:@"com.zk" code:0 userInfo:@{@"message": @"解析 jsonStr 为空"}];
             
             !callback?:callback(error, nil);
@@ -67,6 +68,11 @@
         
         NSError *myError;
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableLeaves error:&myError];
+        
+        if (![dict isKindOfClass:[NSDictionary class]]) {
+            DLog(@"解析 JSON 出错");
+            return;
+        }
         
         dispatch_async(dispatch_get_main_queue(), ^{
             !callback?:callback(nil, dict);

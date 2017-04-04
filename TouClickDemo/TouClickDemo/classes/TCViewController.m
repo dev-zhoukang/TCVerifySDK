@@ -49,7 +49,7 @@ static const CGFloat kDefaultMargin = 15.f;
     TCVerifyButton *verifyBtn = [[TCVerifyButton alloc] init];
     [_contentView addSubview:verifyBtn];
     [verifyBtn verifyCompletion:^(NSString * _Nullable token) {
-        NSLog(@"验证成功, 获取到 tocken ==> %@", token);
+        DLog(@"验证成功, 获取到 tocken ==> %@", token);
     }];
     
     verifyBtn.us_size = (CGSize){INPUTVIEW_WIDTH, 45.f};
@@ -139,7 +139,7 @@ static const CGFloat kDefaultMargin = 15.f;
 }
 
 - (void)loginAction {
-    NSLog(@"login");
+    DLog(@"login");
 }
 
 @end
