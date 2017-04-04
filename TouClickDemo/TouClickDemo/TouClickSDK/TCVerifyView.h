@@ -11,6 +11,6 @@
 
 @interface TCVerifyView : UIView
 
-+ (instancetype)showWithCompletion:(void (^)(TCVerifyModel *verifyModel))completion;
++ (instancetype)showWithCt:(NSString *)ct Completion:(void (^)(TCVerifyModel *verifyModel))completion;
 
 @end

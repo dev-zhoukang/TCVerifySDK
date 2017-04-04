@@ -17,6 +17,8 @@
 
 @end
 
+NSString *selectedType_;
+
 @implementation TCVerify
 
 + (instancetype)modelWithDict:(NSDictionary *)dict {
@@ -110,7 +112,7 @@
     btn.frame = view.bounds;
     btn.tag = idx;
     [btn setTitle:model.title forState:UIControlStateNormal];
-    btn.titleLabel.font = [UIFont systemFontOfSize:14.f];
+    btn.titleLabel.font = [UIFont systemFontOfSize:15.f];
     [self resumeBtn:btn];
     [btn addTarget:self action:@selector(didSelectType:) forControlEvents:UIControlEventTouchUpInside];
     if (!idx) {
@@ -121,14 +123,16 @@
 }
 
 - (void)didSelectType:(UIButton *)btn {
-    TCVerify *model = _dataSource[btn.tag];
-    
     [self highlightBtn:btn];
     [self resumeBtn:_selectedBtn];
-    
     _selectedBtn = btn;
     
-    NSLog(@"%@", model.ct);
+    TCVerify *model = _dataSource[btn.tag];
+    selectedType_ = model.ct;
+}
+
++ (NSString *)getSelectdType {
+    return selectedType_?:@"13";
 }
 
 - (void)highlightBtn:(UIButton *)btn {
@@ -147,3 +151,4 @@
 }
 
 @end
+

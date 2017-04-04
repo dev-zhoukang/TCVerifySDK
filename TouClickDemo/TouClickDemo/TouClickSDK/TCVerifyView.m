@@ -31,6 +31,7 @@
 @property (nonatomic, strong) TCCheckModel              *checkModel;
 @property (nonatomic, copy) NSString                    *verifySid;
 @property (nonatomic, copy) void (^completion)(TCVerifyModel *);
+@property (nonatomic, copy) NSString                    *ct;
 
 @end
 
@@ -44,12 +45,12 @@
     }];
 }
 
-+ (instancetype)showWithCompletion:(void (^)(TCVerifyModel *))completion {
++ (instancetype)showWithCt:(NSString *)ct Completion:(void (^)(TCVerifyModel *))completion {
     TCVerifyView *view = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil].lastObject;
     view.bgView.alpha = 0;
     [[UIApplication sharedApplication].keyWindow addSubview:view];
     view.frame = [UIScreen mainScreen].bounds;
-    
+    view.ct = ct;
     view.topImgWidth.constant = 235.f * WindowZoomScale;
     view.containerView.layer.transform = CATransform3DMakeScale(.01f, .01f, 1.f);
     view.containerView.alpha = 0.0f;
@@ -97,7 +98,7 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"cb"] = [NSString stringWithFormat:@"cb%@", [TCVerifyUtil getSID]];
     params[@"b"] = TCPublicKey;
-    params[@"ct"] = @"14";
+    params[@"ct"] = self.ct?:@"13";
     params[@"sid"] = _checkModel.sid;
     params[@"ran"] = [NSString stringWithFormat:@"%f", TCRandom];
     [[TCNetManager shareInstance] getRequest:path params:params callback:^(NSError *error, NSDictionary *res) {
@@ -109,10 +110,19 @@
         _verifySid = res[@"sid"];
         
         [self updateImagesWithRes:res];
+        [self calculateScaling];
         [ZKLoading hide];
         _refreshBtn.enabled = true;
         [self disableSubmitBtn:false];
     }];
+}
+
+- (void)calculateScaling {
+    CGSize oriImgSize = _topImageView.image.size;
+    NSLog(@"oriImgSize ==> %@", NSStringFromCGSize(oriImgSize));
+    
+    CGFloat oriImgWidth = oriImgSize.width > SCREEN_WIDTH ? oriImgSize.width / 2 : oriImgSize.width;
+    _scaling = oriImgWidth / _topImageView.us_width;
 }
 
 - (void)updateImagesWithRes:(NSDictionary *)res {
@@ -121,8 +131,6 @@
         [images addObject:res[@"data"][key]];
     }
     _topImageView.image = [TCVerifyUtil generateImageWithBase64Dict:images[0]];
-    NSLog(@"oriImgSize ==> %@", NSStringFromCGSize(_topImageView.image.size));
-    _scaling = (_topImageView.image.size.width / 2.f) / _topImageView.us_width;
     
     _thumbnailRightImageView.image = [TCVerifyUtil generateImageWithBase64Dict:images[1]];
     if (images.count > 2) {
@@ -231,7 +239,7 @@
     params[@"sid"] = _verifySid;
     params[@"b"] = TCPublicKey;
     params[@"ckcode"] = @"";
-    params[@"ct"] = @"14";
+    params[@"ct"] = self.ct?:@"13";
     
     [[TCNetManager shareInstance] getRequest:path params:params callback:^(NSError *error, NSDictionary *res) {
        NSLog(@"verify res ===> %@", res);

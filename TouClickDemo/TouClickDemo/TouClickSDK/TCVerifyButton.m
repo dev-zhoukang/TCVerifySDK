@@ -11,6 +11,7 @@
 #import "TCVerifyView.h"
 #import "TCGlobalHeader.h"
 #import "TCVerifyModel.h"
+#import "TCVerifyTabbar.h"
 
 @interface TCVerifyButton()
 
@@ -79,7 +80,8 @@ typedef void (^ZKSettingItemBlock)(NSString *token);
         return;
     }
     
-    [TCVerifyView showWithCompletion:^(TCVerifyModel *verifyModel){
+    NSString *ct = [TCVerifyTabbar getSelectdType];
+    [TCVerifyView showWithCt:ct Completion:^(TCVerifyModel *verifyModel) {
         !_completion?:_completion(verifyModel.token);
         
         [UIView animateWithDuration:.8f animations:^{

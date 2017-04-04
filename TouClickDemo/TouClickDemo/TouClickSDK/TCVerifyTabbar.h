@@ -8,13 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum : NSUInteger {
-    TCVerifyTypeTXPIC, // 图文验证
-    TCVerifyTypeIcon,  // 图标验证
-} TCVerifyType;
-
 @interface TCVerifyTabbar : UIView
 
 + (instancetype)showTabbarOnView:(UIView *)view;
+
++ (NSString *)getSelectdType;
 
 @end
