@@ -37,9 +37,9 @@
 		58A7C90B1E933EA200B07E1A /* TCVerifyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A7C8EE1E933EA200B07E1A /* TCVerifyButton.m */; };
 		58A7C90C1E933EA200B07E1A /* TCVerifyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A7C8F01E933EA200B07E1A /* TCVerifyView.m */; };
 		58A7C90D1E933EA200B07E1A /* TCVerifyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58A7C8F11E933EA200B07E1A /* TCVerifyView.xib */; };
-		58A7C90E1E933EA200B07E1A /* TCNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A7C8F41E933EA200B07E1A /* TCNetManager.m */; };
-		58A7C90F1E933EA200B07E1A /* TCVerifyUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A7C8F61E933EA200B07E1A /* TCVerifyUtil.m */; };
 		58A7C9121E933EE400B07E1A /* TCVerifyTabbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A7C9111E933EE400B07E1A /* TCVerifyTabbar.m */; };
+		58A7C91D1E93722A00B07E1A /* TCNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A7C91A1E93722A00B07E1A /* TCNetManager.m */; };
+		58A7C91E1E93722A00B07E1A /* TCVerifyUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A7C91C1E93722A00B07E1A /* TCVerifyUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,12 +106,12 @@
 		58A7C8EF1E933EA200B07E1A /* TCVerifyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCVerifyView.h; sourceTree = "<group>"; };
 		58A7C8F01E933EA200B07E1A /* TCVerifyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCVerifyView.m; sourceTree = "<group>"; };
 		58A7C8F11E933EA200B07E1A /* TCVerifyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCVerifyView.xib; sourceTree = "<group>"; };
-		58A7C8F31E933EA200B07E1A /* TCNetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCNetManager.h; sourceTree = "<group>"; };
-		58A7C8F41E933EA200B07E1A /* TCNetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCNetManager.m; sourceTree = "<group>"; };
-		58A7C8F51E933EA200B07E1A /* TCVerifyUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCVerifyUtil.h; sourceTree = "<group>"; };
-		58A7C8F61E933EA200B07E1A /* TCVerifyUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCVerifyUtil.m; sourceTree = "<group>"; };
 		58A7C9101E933EE400B07E1A /* TCVerifyTabbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCVerifyTabbar.h; sourceTree = "<group>"; };
 		58A7C9111E933EE400B07E1A /* TCVerifyTabbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCVerifyTabbar.m; sourceTree = "<group>"; };
+		58A7C9191E93722A00B07E1A /* TCNetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCNetManager.h; sourceTree = "<group>"; };
+		58A7C91A1E93722A00B07E1A /* TCNetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCNetManager.m; sourceTree = "<group>"; };
+		58A7C91B1E93722A00B07E1A /* TCVerifyUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCVerifyUtil.h; sourceTree = "<group>"; };
+		58A7C91C1E93722A00B07E1A /* TCVerifyUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCVerifyUtil.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,9 +215,12 @@
 				58A7C8CF1E933EA200B07E1A /* images */,
 				58A7C8DF1E933EA200B07E1A /* model */,
 				58A7C8E41E933EA200B07E1A /* support */,
-				58A7C8F21E933EA200B07E1A /* util */,
 				58A7C8EC1E933EA200B07E1A /* TCGlobalHeader.h */,
 				58A7C9101E933EE400B07E1A /* TCVerifyTabbar.h */,
+				58A7C9191E93722A00B07E1A /* TCNetManager.h */,
+				58A7C91A1E93722A00B07E1A /* TCNetManager.m */,
+				58A7C91B1E93722A00B07E1A /* TCVerifyUtil.h */,
+				58A7C91C1E93722A00B07E1A /* TCVerifyUtil.m */,
 				58A7C9111E933EE400B07E1A /* TCVerifyTabbar.m */,
 				58A7C8ED1E933EA200B07E1A /* TCVerifyButton.h */,
 				58A7C8EE1E933EA200B07E1A /* TCVerifyButton.m */,
@@ -280,17 +283,6 @@
 				58A7C8E91E933EA200B07E1A /* ZKLoading.m */,
 			);
 			path = loading;
-			sourceTree = "<group>";
-		};
-		58A7C8F21E933EA200B07E1A /* util */ = {
-			isa = PBXGroup;
-			children = (
-				58A7C8F31E933EA200B07E1A /* TCNetManager.h */,
-				58A7C8F41E933EA200B07E1A /* TCNetManager.m */,
-				58A7C8F51E933EA200B07E1A /* TCVerifyUtil.h */,
-				58A7C8F61E933EA200B07E1A /* TCVerifyUtil.m */,
-			);
-			path = util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -448,11 +440,11 @@
 				588A6B031E8CFCB500C11E48 /* TCViewController.m in Sources */,
 				58A7C9091E933EA200B07E1A /* ZKLoading.m in Sources */,
 				588A6ACB1E8CF4C900C11E48 /* AppDelegate.m in Sources */,
-				58A7C90E1E933EA200B07E1A /* TCNetManager.m in Sources */,
 				58A7C9121E933EE400B07E1A /* TCVerifyTabbar.m in Sources */,
 				58A7C90C1E933EA200B07E1A /* TCVerifyView.m in Sources */,
+				58A7C91E1E93722A00B07E1A /* TCVerifyUtil.m in Sources */,
+				58A7C91D1E93722A00B07E1A /* TCNetManager.m in Sources */,
 				588A6AC81E8CF4C900C11E48 /* main.m in Sources */,
-				58A7C90F1E933EA200B07E1A /* TCVerifyUtil.m in Sources */,
 				58A7C90A1E933EA200B07E1A /* UIView+Addition.m in Sources */,
 				58A7C9061E933EA200B07E1A /* TCCheckModel.m in Sources */,
 				58A7C9071E933EA200B07E1A /* TCVerifyModel.m in Sources */,
