@@ -128,6 +128,8 @@ static const CGFloat kDefaultMargin = 15.f;
     
     UITextField *field = [UITextField new];
     [view addSubview:field];
+    field.keyboardType = UIKeyboardTypeEmailAddress;
+    field.secureTextEntry = [title isEqualToString:@"密码"];
     field.us_origin = (CGPoint){CGRectGetMaxX(titleLabel.frame), 0};
     field.us_size = (CGSize){CGRectGetWidth(view.frame) - CGRectGetMaxX(titleLabel.frame) - 10.f, 30};
     field.us_centerY = view.us_centerY + 1.f;
