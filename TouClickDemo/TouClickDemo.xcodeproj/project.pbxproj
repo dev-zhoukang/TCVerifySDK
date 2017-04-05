@@ -112,6 +112,7 @@
 		58A7C91A1E93722A00B07E1A /* TCNetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCNetManager.m; sourceTree = "<group>"; };
 		58A7C91B1E93722A00B07E1A /* TCVerifyUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCVerifyUtil.h; sourceTree = "<group>"; };
 		58A7C91C1E93722A00B07E1A /* TCVerifyUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCVerifyUtil.m; sourceTree = "<group>"; };
+		58D4CA621E9489CF00D08FB1 /* TCVerifySDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCVerifySDK.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +217,7 @@
 				58A7C8DF1E933EA200B07E1A /* model */,
 				58A7C8E41E933EA200B07E1A /* support */,
 				58A7C8EC1E933EA200B07E1A /* TCGlobalHeader.h */,
+				58D4CA621E9489CF00D08FB1 /* TCVerifySDK.h */,
 				58A7C9101E933EE400B07E1A /* TCVerifyTabbar.h */,
 				58A7C9111E933EE400B07E1A /* TCVerifyTabbar.m */,
 				58A7C9191E93722A00B07E1A /* TCNetManager.h */,
@@ -591,12 +593,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 9S49W485R2;
 				INFOPLIST_FILE = TouClickDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zk.touclick.TouClickDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -604,12 +608,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 9S49W485R2;
 				INFOPLIST_FILE = TouClickDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zk.touclick.TouClickDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

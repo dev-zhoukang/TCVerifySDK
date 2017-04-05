@@ -7,20 +7,18 @@
 //
 
 #import "TCViewController.h"
-#import "TCVerifyButton.h"
-#import "UIView+Addition.h"
-#import "TCGlobalHeader.h"
-#import "TCVerifyTabbar.h"
+#import "TCVerifySDK.h"
 
 #define INPUTVIEW_WIDTH  (230.f * WindowZoomScale)
 #define GRAY_COLOR       [UIColor colorWithRed:170/255.f green:170/255.f blue:170/255.f alpha:1]
 
 @interface TCViewController ()
 
-@property (nonatomic, strong) UIView      *contentView;
-@property (nonatomic, strong) UITextField *accountField;
-@property (nonatomic, strong) UITextField *pwdField;
-@property (nonatomic, strong) UIButton    *loginBtn;
+@property (nonatomic, strong) UIView         *contentView;
+@property (nonatomic, strong) UIView         *accountView;
+@property (nonatomic, strong) UIView         *pwdView;
+@property (nonatomic, strong) UIButton       *loginBtn;
+@property (nonatomic, strong) TCVerifyButton *verifyBtn;
 
 @end
 
@@ -37,17 +35,27 @@ static const CGFloat kDefaultMargin = 15.f;
     
     [self setupScrollView];
     [self setupLogoView];
-    [TCVerifyTabbar showTabbarOnView:self.view];
     
-    UIView *accountView = [self setupInputView:@"账户"];
-    accountView.us_centerY = _contentView.us_centerY - 100.f;
+    _accountView = [self setupInputView:@"账户"];
+    _accountView.us_centerY = _contentView.us_centerY - 100.f;
     
-    UIView *pwdView = [self setupInputView:@"密码"];
-    pwdView.us_top = CGRectGetMaxY(accountView.frame) + kDefaultMargin;
+    _pwdView = [self setupInputView:@"密码"];
+    _pwdView.us_top = CGRectGetMaxY(_accountView.frame) + kDefaultMargin;
     
-    TCVerifyButton *verifyBtn = [[TCVerifyButton alloc] init];
-    [_contentView addSubview:verifyBtn];
-    [verifyBtn verifyCompletion:^(NSString * _Nullable token) {
+    [self setupVerifyView];
+    
+    [self setupLoginBtn];
+}
+
+
+/**
+ 开发者只需关心该方法内的实现，verifyBtn 是验证按钮，其 UI 和 点击验证事件已封装在内部，验证结果会通过 verifyCompletion block 回调给开发者。所以开发者只需设置其 frame 布局和接收回调即可。
+ 底部的选择验证方式的 tabbar 只需实现 `showTabbarOnView:` 即可。layout 布局和点击按钮更换验证方式的逻辑已封装在内部。
+ */
+- (void)setupVerifyView {
+    _verifyBtn = [[TCVerifyButton alloc] init];
+    [_contentView addSubview:_verifyBtn];
+    [_verifyBtn verifyCompletion:^(NSString * _Nullable token) {
         if (token) {
             DLog(@"验证成功, 获取到 tocken ==> %@", token);
         }
@@ -55,18 +63,21 @@ static const CGFloat kDefaultMargin = 15.f;
             DLog(@"验证失败");
         }
     }];
+    _verifyBtn.us_size = (CGSize){INPUTVIEW_WIDTH, 45.f};
+    _verifyBtn.us_centerX = _verifyBtn.superview.us_centerX;
+    _verifyBtn.us_top = CGRectGetMaxY(_pwdView.frame) + kDefaultMargin;
     
-    verifyBtn.us_size = (CGSize){INPUTVIEW_WIDTH, 45.f};
-    verifyBtn.us_centerX = verifyBtn.superview.us_centerX;
-    verifyBtn.us_top = CGRectGetMaxY(pwdView.frame) + kDefaultMargin;
-    
+    [TCVerifyTabbar showTabbarOnView:self.view];
+}
+
+- (void)setupLoginBtn {
     UIButton *loginBtn = [[UIButton alloc] init];
     [_contentView addSubview:loginBtn];
     [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
     loginBtn.backgroundColor = GRAY_COLOR;
     loginBtn.us_size = (CGSize){INPUTVIEW_WIDTH, 50.f};
     loginBtn.us_centerX = loginBtn.superview.us_centerX;
-    loginBtn.us_top = CGRectGetMaxY(verifyBtn.frame) + kDefaultMargin;
+    loginBtn.us_top = CGRectGetMaxY(_verifyBtn.frame) + kDefaultMargin;
     loginBtn.layer.cornerRadius = 5.f;
     [loginBtn setShowsTouchWhenHighlighted:true];
     [loginBtn addTarget:self action:@selector(loginAction) forControlEvents:UIControlEventTouchUpInside];

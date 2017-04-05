@@ -18,7 +18,9 @@
 - (void)verifyCompletion:(void (^ __nullable)( NSString * _Nullable token))completion;
 
 /**
- 验证通过后，可设置验证按钮为成功状态
+ 验证通过后，可设置验证按钮为成功状态 或 待验证状态
+ 
+ @param success true: 成功状态  false: 待验证状态
  */
 - (void)setSucceeStyle:(BOOL)success;
 

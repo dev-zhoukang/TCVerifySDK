@@ -22,8 +22,8 @@
 #define DLog(...)
 #endif
 
-#define GlobalBlueColor_Normal  [UIColor colorWithRed:63/255.f green:158/255.f blue:214/255.f alpha:1]
-#define GlobalBlueColor_HL      [UIColor colorWithRed:43/255.f green:138/255.f blue:194/255.f alpha:1]
+#define GlobalBlueColor_Normal    [UIColor colorWithRed:63/255.f green:158/255.f blue:214/255.f alpha:1]
+#define GlobalBlueColor_HL        [UIColor colorWithRed:43/255.f green:138/255.f blue:194/255.f alpha:1]
 #define GlobalBlueColor_Disabled  [UIColor colorWithRed:63/255.f green:158/255.f blue:214/255.f alpha:.4]
 
 #define SCREEN_HEIGHT        ([[UIScreen mainScreen] bounds].size.height)
