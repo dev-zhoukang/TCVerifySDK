@@ -7,6 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5831EDB61E94973D00756DAC /* CABasicAnimation+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 5831ED8E1E94973D00756DAC /* CABasicAnimation+Category.m */; };
+		5831EDB71E94973D00756DAC /* ZKLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 5831ED901E94973D00756DAC /* ZKLoading.m */; };
+		5831EDB81E94973D00756DAC /* TCNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5831ED921E94973D00756DAC /* TCNetManager.m */; };
+		5831EDB91E94973D00756DAC /* TCVerifyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5831ED941E94973D00756DAC /* TCVerifyButton.m */; };
+		5831EDBA1E94973D00756DAC /* TCVerifyTabbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5831ED961E94973D00756DAC /* TCVerifyTabbar.m */; };
+		5831EDBB1E94973D00756DAC /* TCVerifyUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5831ED981E94973D00756DAC /* TCVerifyUtil.m */; };
+		5831EDBC1E94973D00756DAC /* TCVerifyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5831ED9A1E94973D00756DAC /* TCVerifyView.m */; };
+		5831EDBD1E94973D00756DAC /* TCVerifyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5831ED9B1E94973D00756DAC /* TCVerifyView.xib */; };
+		5831EDBE1E94973D00756DAC /* bubble1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5831ED9D1E94973D00756DAC /* bubble1@2x.png */; };
+		5831EDBF1E94973D00756DAC /* bubble2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5831ED9E1E94973D00756DAC /* bubble2@2x.png */; };
+		5831EDC01E94973D00756DAC /* close1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5831ED9F1E94973D00756DAC /* close1@2x.png */; };
+		5831EDC11E94973D00756DAC /* close2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5831EDA01E94973D00756DAC /* close2@2x.png */; };
+		5831EDC21E94973D00756DAC /* done@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5831EDA11E94973D00756DAC /* done@2x.png */; };
+		5831EDC31E94973D00756DAC /* error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5831EDA21E94973D00756DAC /* error@2x.png */; };
+		5831EDC41E94973D00756DAC /* icon_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5831EDA31E94973D00756DAC /* icon_close@2x.png */; };
+		5831EDC51E94973D00756DAC /* icon_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5831EDA41E94973D00756DAC /* icon_refresh@2x.png */; };
+		5831EDC61E94973D00756DAC /* logo-b@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5831EDA51E94973D00756DAC /* logo-b@2x.png */; };
+		5831EDC71E94973D00756DAC /* logo-s@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5831EDA61E94973D00756DAC /* logo-s@2x.png */; };
+		5831EDC81E94973D00756DAC /* logo-touclick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5831EDA71E94973D00756DAC /* logo-touclick@2x.png */; };
+		5831EDC91E94973D00756DAC /* logo-w@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5831EDA81E94973D00756DAC /* logo-w@2x.png */; };
+		5831EDCA1E94973D00756DAC /* OK@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5831EDA91E94973D00756DAC /* OK@2x.png */; };
+		5831EDCB1E94973D00756DAC /* refresh1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5831EDAA1E94973D00756DAC /* refresh1@2x.png */; };
+		5831EDCC1E94973D00756DAC /* refresh2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5831EDAB1E94973D00756DAC /* refresh2@2x.png */; };
+		5831EDCD1E94973D00756DAC /* TCCheckModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5831EDAE1E94973D00756DAC /* TCCheckModel.m */; };
+		5831EDCE1E94973D00756DAC /* TCVerifyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5831EDB01E94973D00756DAC /* TCVerifyModel.m */; };
+		5831EDCF1E94973D00756DAC /* UIView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5831EDB31E94973D00756DAC /* UIView+Addition.m */; };
 		588A6AC81E8CF4C900C11E48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 588A6AC71E8CF4C900C11E48 /* main.m */; };
 		588A6ACB1E8CF4C900C11E48 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 588A6ACA1E8CF4C900C11E48 /* AppDelegate.m */; };
 		588A6AD31E8CF4C900C11E48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 588A6AD21E8CF4C900C11E48 /* Assets.xcassets */; };
@@ -14,32 +40,6 @@
 		588A6AE11E8CF4CA00C11E48 /* TouClickDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 588A6AE01E8CF4CA00C11E48 /* TouClickDemoTests.m */; };
 		588A6AEC1E8CF4CA00C11E48 /* TouClickDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 588A6AEB1E8CF4CA00C11E48 /* TouClickDemoUITests.m */; };
 		588A6B031E8CFCB500C11E48 /* TCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 588A6B011E8CFCB500C11E48 /* TCViewController.m */; };
-		58A7C8F71E933EA200B07E1A /* bubble1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A7C8D01E933EA200B07E1A /* bubble1@2x.png */; };
-		58A7C8F81E933EA200B07E1A /* bubble2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A7C8D11E933EA200B07E1A /* bubble2@2x.png */; };
-		58A7C8F91E933EA200B07E1A /* close1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A7C8D21E933EA200B07E1A /* close1@2x.png */; };
-		58A7C8FA1E933EA200B07E1A /* close2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A7C8D31E933EA200B07E1A /* close2@2x.png */; };
-		58A7C8FB1E933EA200B07E1A /* done@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A7C8D41E933EA200B07E1A /* done@2x.png */; };
-		58A7C8FC1E933EA200B07E1A /* error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A7C8D51E933EA200B07E1A /* error@2x.png */; };
-		58A7C8FD1E933EA200B07E1A /* icon_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A7C8D61E933EA200B07E1A /* icon_close@2x.png */; };
-		58A7C8FE1E933EA200B07E1A /* icon_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A7C8D71E933EA200B07E1A /* icon_refresh@2x.png */; };
-		58A7C8FF1E933EA200B07E1A /* logo-b@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A7C8D81E933EA200B07E1A /* logo-b@2x.png */; };
-		58A7C9001E933EA200B07E1A /* logo-s@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A7C8D91E933EA200B07E1A /* logo-s@2x.png */; };
-		58A7C9011E933EA200B07E1A /* logo-touclick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A7C8DA1E933EA200B07E1A /* logo-touclick@2x.png */; };
-		58A7C9021E933EA200B07E1A /* logo-w@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A7C8DB1E933EA200B07E1A /* logo-w@2x.png */; };
-		58A7C9031E933EA200B07E1A /* OK@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A7C8DC1E933EA200B07E1A /* OK@2x.png */; };
-		58A7C9041E933EA200B07E1A /* refresh1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A7C8DD1E933EA200B07E1A /* refresh1@2x.png */; };
-		58A7C9051E933EA200B07E1A /* refresh2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A7C8DE1E933EA200B07E1A /* refresh2@2x.png */; };
-		58A7C9061E933EA200B07E1A /* TCCheckModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A7C8E11E933EA200B07E1A /* TCCheckModel.m */; };
-		58A7C9071E933EA200B07E1A /* TCVerifyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A7C8E31E933EA200B07E1A /* TCVerifyModel.m */; };
-		58A7C9081E933EA200B07E1A /* CABasicAnimation+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A7C8E71E933EA200B07E1A /* CABasicAnimation+Category.m */; };
-		58A7C9091E933EA200B07E1A /* ZKLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A7C8E91E933EA200B07E1A /* ZKLoading.m */; };
-		58A7C90A1E933EA200B07E1A /* UIView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A7C8EB1E933EA200B07E1A /* UIView+Addition.m */; };
-		58A7C90B1E933EA200B07E1A /* TCVerifyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A7C8EE1E933EA200B07E1A /* TCVerifyButton.m */; };
-		58A7C90C1E933EA200B07E1A /* TCVerifyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A7C8F01E933EA200B07E1A /* TCVerifyView.m */; };
-		58A7C90D1E933EA200B07E1A /* TCVerifyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58A7C8F11E933EA200B07E1A /* TCVerifyView.xib */; };
-		58A7C9121E933EE400B07E1A /* TCVerifyTabbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A7C9111E933EE400B07E1A /* TCVerifyTabbar.m */; };
-		58A7C91D1E93722A00B07E1A /* TCNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A7C91A1E93722A00B07E1A /* TCNetManager.m */; };
-		58A7C91E1E93722A00B07E1A /* TCVerifyUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A7C91C1E93722A00B07E1A /* TCVerifyUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +60,44 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5831ED8D1E94973D00756DAC /* CABasicAnimation+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CABasicAnimation+Category.h"; sourceTree = "<group>"; };
+		5831ED8E1E94973D00756DAC /* CABasicAnimation+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CABasicAnimation+Category.m"; sourceTree = "<group>"; };
+		5831ED8F1E94973D00756DAC /* ZKLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKLoading.h; sourceTree = "<group>"; };
+		5831ED901E94973D00756DAC /* ZKLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKLoading.m; sourceTree = "<group>"; };
+		5831ED911E94973D00756DAC /* TCNetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCNetManager.h; sourceTree = "<group>"; };
+		5831ED921E94973D00756DAC /* TCNetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCNetManager.m; sourceTree = "<group>"; };
+		5831ED931E94973D00756DAC /* TCVerifyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCVerifyButton.h; sourceTree = "<group>"; };
+		5831ED941E94973D00756DAC /* TCVerifyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCVerifyButton.m; sourceTree = "<group>"; };
+		5831ED951E94973D00756DAC /* TCVerifyTabbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCVerifyTabbar.h; sourceTree = "<group>"; };
+		5831ED961E94973D00756DAC /* TCVerifyTabbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCVerifyTabbar.m; sourceTree = "<group>"; };
+		5831ED971E94973D00756DAC /* TCVerifyUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCVerifyUtil.h; sourceTree = "<group>"; };
+		5831ED981E94973D00756DAC /* TCVerifyUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCVerifyUtil.m; sourceTree = "<group>"; };
+		5831ED991E94973D00756DAC /* TCVerifyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCVerifyView.h; sourceTree = "<group>"; };
+		5831ED9A1E94973D00756DAC /* TCVerifyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCVerifyView.m; sourceTree = "<group>"; };
+		5831ED9B1E94973D00756DAC /* TCVerifyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCVerifyView.xib; sourceTree = "<group>"; };
+		5831ED9D1E94973D00756DAC /* bubble1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble1@2x.png"; sourceTree = "<group>"; };
+		5831ED9E1E94973D00756DAC /* bubble2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble2@2x.png"; sourceTree = "<group>"; };
+		5831ED9F1E94973D00756DAC /* close1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close1@2x.png"; sourceTree = "<group>"; };
+		5831EDA01E94973D00756DAC /* close2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close2@2x.png"; sourceTree = "<group>"; };
+		5831EDA11E94973D00756DAC /* done@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "done@2x.png"; sourceTree = "<group>"; };
+		5831EDA21E94973D00756DAC /* error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error@2x.png"; sourceTree = "<group>"; };
+		5831EDA31E94973D00756DAC /* icon_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_close@2x.png"; sourceTree = "<group>"; };
+		5831EDA41E94973D00756DAC /* icon_refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_refresh@2x.png"; sourceTree = "<group>"; };
+		5831EDA51E94973D00756DAC /* logo-b@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-b@2x.png"; sourceTree = "<group>"; };
+		5831EDA61E94973D00756DAC /* logo-s@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-s@2x.png"; sourceTree = "<group>"; };
+		5831EDA71E94973D00756DAC /* logo-touclick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-touclick@2x.png"; sourceTree = "<group>"; };
+		5831EDA81E94973D00756DAC /* logo-w@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-w@2x.png"; sourceTree = "<group>"; };
+		5831EDA91E94973D00756DAC /* OK@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OK@2x.png"; sourceTree = "<group>"; };
+		5831EDAA1E94973D00756DAC /* refresh1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh1@2x.png"; sourceTree = "<group>"; };
+		5831EDAB1E94973D00756DAC /* refresh2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh2@2x.png"; sourceTree = "<group>"; };
+		5831EDAD1E94973D00756DAC /* TCCheckModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCCheckModel.h; sourceTree = "<group>"; };
+		5831EDAE1E94973D00756DAC /* TCCheckModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCCheckModel.m; sourceTree = "<group>"; };
+		5831EDAF1E94973D00756DAC /* TCVerifyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCVerifyModel.h; sourceTree = "<group>"; };
+		5831EDB01E94973D00756DAC /* TCVerifyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCVerifyModel.m; sourceTree = "<group>"; };
+		5831EDB21E94973D00756DAC /* UIView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Addition.h"; sourceTree = "<group>"; };
+		5831EDB31E94973D00756DAC /* UIView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Addition.m"; sourceTree = "<group>"; };
+		5831EDB41E94973D00756DAC /* TCGlobalHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCGlobalHeader.h; path = ../TCGlobalHeader.h; sourceTree = "<group>"; };
+		5831EDB51E94973D00756DAC /* TCVerifySDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCVerifySDK.h; sourceTree = "<group>"; };
 		588A6AC31E8CF4C900C11E48 /* TouClickDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouClickDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		588A6AC71E8CF4C900C11E48 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		588A6AC91E8CF4C900C11E48 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -75,44 +113,6 @@
 		588A6AED1E8CF4CA00C11E48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		588A6B001E8CFCB500C11E48 /* TCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCViewController.h; sourceTree = "<group>"; };
 		588A6B011E8CFCB500C11E48 /* TCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCViewController.m; sourceTree = "<group>"; };
-		58A7C8D01E933EA200B07E1A /* bubble1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble1@2x.png"; sourceTree = "<group>"; };
-		58A7C8D11E933EA200B07E1A /* bubble2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble2@2x.png"; sourceTree = "<group>"; };
-		58A7C8D21E933EA200B07E1A /* close1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close1@2x.png"; sourceTree = "<group>"; };
-		58A7C8D31E933EA200B07E1A /* close2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close2@2x.png"; sourceTree = "<group>"; };
-		58A7C8D41E933EA200B07E1A /* done@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "done@2x.png"; sourceTree = "<group>"; };
-		58A7C8D51E933EA200B07E1A /* error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "error@2x.png"; sourceTree = "<group>"; };
-		58A7C8D61E933EA200B07E1A /* icon_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_close@2x.png"; sourceTree = "<group>"; };
-		58A7C8D71E933EA200B07E1A /* icon_refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_refresh@2x.png"; sourceTree = "<group>"; };
-		58A7C8D81E933EA200B07E1A /* logo-b@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-b@2x.png"; sourceTree = "<group>"; };
-		58A7C8D91E933EA200B07E1A /* logo-s@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-s@2x.png"; sourceTree = "<group>"; };
-		58A7C8DA1E933EA200B07E1A /* logo-touclick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-touclick@2x.png"; sourceTree = "<group>"; };
-		58A7C8DB1E933EA200B07E1A /* logo-w@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-w@2x.png"; sourceTree = "<group>"; };
-		58A7C8DC1E933EA200B07E1A /* OK@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OK@2x.png"; sourceTree = "<group>"; };
-		58A7C8DD1E933EA200B07E1A /* refresh1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh1@2x.png"; sourceTree = "<group>"; };
-		58A7C8DE1E933EA200B07E1A /* refresh2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh2@2x.png"; sourceTree = "<group>"; };
-		58A7C8E01E933EA200B07E1A /* TCCheckModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCCheckModel.h; sourceTree = "<group>"; };
-		58A7C8E11E933EA200B07E1A /* TCCheckModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCCheckModel.m; sourceTree = "<group>"; };
-		58A7C8E21E933EA200B07E1A /* TCVerifyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCVerifyModel.h; sourceTree = "<group>"; };
-		58A7C8E31E933EA200B07E1A /* TCVerifyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCVerifyModel.m; sourceTree = "<group>"; };
-		58A7C8E61E933EA200B07E1A /* CABasicAnimation+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CABasicAnimation+Category.h"; sourceTree = "<group>"; };
-		58A7C8E71E933EA200B07E1A /* CABasicAnimation+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CABasicAnimation+Category.m"; sourceTree = "<group>"; };
-		58A7C8E81E933EA200B07E1A /* ZKLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKLoading.h; sourceTree = "<group>"; };
-		58A7C8E91E933EA200B07E1A /* ZKLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKLoading.m; sourceTree = "<group>"; };
-		58A7C8EA1E933EA200B07E1A /* UIView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Addition.h"; sourceTree = "<group>"; };
-		58A7C8EB1E933EA200B07E1A /* UIView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Addition.m"; sourceTree = "<group>"; };
-		58A7C8EC1E933EA200B07E1A /* TCGlobalHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCGlobalHeader.h; sourceTree = "<group>"; };
-		58A7C8ED1E933EA200B07E1A /* TCVerifyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCVerifyButton.h; sourceTree = "<group>"; };
-		58A7C8EE1E933EA200B07E1A /* TCVerifyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCVerifyButton.m; sourceTree = "<group>"; };
-		58A7C8EF1E933EA200B07E1A /* TCVerifyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCVerifyView.h; sourceTree = "<group>"; };
-		58A7C8F01E933EA200B07E1A /* TCVerifyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCVerifyView.m; sourceTree = "<group>"; };
-		58A7C8F11E933EA200B07E1A /* TCVerifyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCVerifyView.xib; sourceTree = "<group>"; };
-		58A7C9101E933EE400B07E1A /* TCVerifyTabbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCVerifyTabbar.h; sourceTree = "<group>"; };
-		58A7C9111E933EE400B07E1A /* TCVerifyTabbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCVerifyTabbar.m; sourceTree = "<group>"; };
-		58A7C9191E93722A00B07E1A /* TCNetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCNetManager.h; sourceTree = "<group>"; };
-		58A7C91A1E93722A00B07E1A /* TCNetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCNetManager.m; sourceTree = "<group>"; };
-		58A7C91B1E93722A00B07E1A /* TCVerifyUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCVerifyUtil.h; sourceTree = "<group>"; };
-		58A7C91C1E93722A00B07E1A /* TCVerifyUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCVerifyUtil.m; sourceTree = "<group>"; };
-		58D4CA621E9489CF00D08FB1 /* TCVerifySDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCVerifySDK.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +140,91 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5831ED8A1E94973D00756DAC /* TouClickSDK */ = {
+			isa = PBXGroup;
+			children = (
+				5831EDB51E94973D00756DAC /* TCVerifySDK.h */,
+				5831ED8B1E94973D00756DAC /* core */,
+				5831ED9C1E94973D00756DAC /* images */,
+				5831EDAC1E94973D00756DAC /* model */,
+				5831EDB11E94973D00756DAC /* support */,
+			);
+			path = TouClickSDK;
+			sourceTree = "<group>";
+		};
+		5831ED8B1E94973D00756DAC /* core */ = {
+			isa = PBXGroup;
+			children = (
+				5831ED8C1E94973D00756DAC /* loading */,
+				5831EDB41E94973D00756DAC /* TCGlobalHeader.h */,
+				5831ED911E94973D00756DAC /* TCNetManager.h */,
+				5831ED921E94973D00756DAC /* TCNetManager.m */,
+				5831ED931E94973D00756DAC /* TCVerifyButton.h */,
+				5831ED941E94973D00756DAC /* TCVerifyButton.m */,
+				5831ED951E94973D00756DAC /* TCVerifyTabbar.h */,
+				5831ED961E94973D00756DAC /* TCVerifyTabbar.m */,
+				5831ED971E94973D00756DAC /* TCVerifyUtil.h */,
+				5831ED981E94973D00756DAC /* TCVerifyUtil.m */,
+				5831ED991E94973D00756DAC /* TCVerifyView.h */,
+				5831ED9A1E94973D00756DAC /* TCVerifyView.m */,
+				5831ED9B1E94973D00756DAC /* TCVerifyView.xib */,
+			);
+			path = core;
+			sourceTree = "<group>";
+		};
+		5831ED8C1E94973D00756DAC /* loading */ = {
+			isa = PBXGroup;
+			children = (
+				5831ED8D1E94973D00756DAC /* CABasicAnimation+Category.h */,
+				5831ED8E1E94973D00756DAC /* CABasicAnimation+Category.m */,
+				5831ED8F1E94973D00756DAC /* ZKLoading.h */,
+				5831ED901E94973D00756DAC /* ZKLoading.m */,
+			);
+			path = loading;
+			sourceTree = "<group>";
+		};
+		5831ED9C1E94973D00756DAC /* images */ = {
+			isa = PBXGroup;
+			children = (
+				5831ED9D1E94973D00756DAC /* bubble1@2x.png */,
+				5831ED9E1E94973D00756DAC /* bubble2@2x.png */,
+				5831ED9F1E94973D00756DAC /* close1@2x.png */,
+				5831EDA01E94973D00756DAC /* close2@2x.png */,
+				5831EDA11E94973D00756DAC /* done@2x.png */,
+				5831EDA21E94973D00756DAC /* error@2x.png */,
+				5831EDA31E94973D00756DAC /* icon_close@2x.png */,
+				5831EDA41E94973D00756DAC /* icon_refresh@2x.png */,
+				5831EDA51E94973D00756DAC /* logo-b@2x.png */,
+				5831EDA61E94973D00756DAC /* logo-s@2x.png */,
+				5831EDA71E94973D00756DAC /* logo-touclick@2x.png */,
+				5831EDA81E94973D00756DAC /* logo-w@2x.png */,
+				5831EDA91E94973D00756DAC /* OK@2x.png */,
+				5831EDAA1E94973D00756DAC /* refresh1@2x.png */,
+				5831EDAB1E94973D00756DAC /* refresh2@2x.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		5831EDAC1E94973D00756DAC /* model */ = {
+			isa = PBXGroup;
+			children = (
+				5831EDAD1E94973D00756DAC /* TCCheckModel.h */,
+				5831EDAE1E94973D00756DAC /* TCCheckModel.m */,
+				5831EDAF1E94973D00756DAC /* TCVerifyModel.h */,
+				5831EDB01E94973D00756DAC /* TCVerifyModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		5831EDB11E94973D00756DAC /* support */ = {
+			isa = PBXGroup;
+			children = (
+				5831EDB21E94973D00756DAC /* UIView+Addition.h */,
+				5831EDB31E94973D00756DAC /* UIView+Addition.m */,
+			);
+			path = support;
+			sourceTree = "<group>";
+		};
 		588A6ABA1E8CF4C900C11E48 = {
 			isa = PBXGroup;
 			children = (
@@ -166,7 +251,7 @@
 				588A6AC91E8CF4C900C11E48 /* AppDelegate.h */,
 				588A6ACA1E8CF4C900C11E48 /* AppDelegate.m */,
 				588A6AFF1E8CFCA200C11E48 /* classes */,
-				58A7C8CE1E933EA200B07E1A /* TouClickSDK */,
+				5831ED8A1E94973D00756DAC /* TouClickSDK */,
 				588A6AC61E8CF4C900C11E48 /* Supporting Files */,
 			);
 			path = TouClickDemo;
@@ -208,83 +293,6 @@
 				588A6B011E8CFCB500C11E48 /* TCViewController.m */,
 			);
 			path = classes;
-			sourceTree = "<group>";
-		};
-		58A7C8CE1E933EA200B07E1A /* TouClickSDK */ = {
-			isa = PBXGroup;
-			children = (
-				58A7C8CF1E933EA200B07E1A /* images */,
-				58A7C8DF1E933EA200B07E1A /* model */,
-				58A7C8E41E933EA200B07E1A /* support */,
-				58A7C8EC1E933EA200B07E1A /* TCGlobalHeader.h */,
-				58D4CA621E9489CF00D08FB1 /* TCVerifySDK.h */,
-				58A7C9101E933EE400B07E1A /* TCVerifyTabbar.h */,
-				58A7C9111E933EE400B07E1A /* TCVerifyTabbar.m */,
-				58A7C9191E93722A00B07E1A /* TCNetManager.h */,
-				58A7C91A1E93722A00B07E1A /* TCNetManager.m */,
-				58A7C91B1E93722A00B07E1A /* TCVerifyUtil.h */,
-				58A7C91C1E93722A00B07E1A /* TCVerifyUtil.m */,
-				58A7C8ED1E933EA200B07E1A /* TCVerifyButton.h */,
-				58A7C8EE1E933EA200B07E1A /* TCVerifyButton.m */,
-				58A7C8EF1E933EA200B07E1A /* TCVerifyView.h */,
-				58A7C8F01E933EA200B07E1A /* TCVerifyView.m */,
-				58A7C8F11E933EA200B07E1A /* TCVerifyView.xib */,
-			);
-			path = TouClickSDK;
-			sourceTree = "<group>";
-		};
-		58A7C8CF1E933EA200B07E1A /* images */ = {
-			isa = PBXGroup;
-			children = (
-				58A7C8D01E933EA200B07E1A /* bubble1@2x.png */,
-				58A7C8D11E933EA200B07E1A /* bubble2@2x.png */,
-				58A7C8D21E933EA200B07E1A /* close1@2x.png */,
-				58A7C8D31E933EA200B07E1A /* close2@2x.png */,
-				58A7C8D41E933EA200B07E1A /* done@2x.png */,
-				58A7C8D51E933EA200B07E1A /* error@2x.png */,
-				58A7C8D61E933EA200B07E1A /* icon_close@2x.png */,
-				58A7C8D71E933EA200B07E1A /* icon_refresh@2x.png */,
-				58A7C8D81E933EA200B07E1A /* logo-b@2x.png */,
-				58A7C8D91E933EA200B07E1A /* logo-s@2x.png */,
-				58A7C8DA1E933EA200B07E1A /* logo-touclick@2x.png */,
-				58A7C8DB1E933EA200B07E1A /* logo-w@2x.png */,
-				58A7C8DC1E933EA200B07E1A /* OK@2x.png */,
-				58A7C8DD1E933EA200B07E1A /* refresh1@2x.png */,
-				58A7C8DE1E933EA200B07E1A /* refresh2@2x.png */,
-			);
-			path = images;
-			sourceTree = "<group>";
-		};
-		58A7C8DF1E933EA200B07E1A /* model */ = {
-			isa = PBXGroup;
-			children = (
-				58A7C8E01E933EA200B07E1A /* TCCheckModel.h */,
-				58A7C8E11E933EA200B07E1A /* TCCheckModel.m */,
-				58A7C8E21E933EA200B07E1A /* TCVerifyModel.h */,
-				58A7C8E31E933EA200B07E1A /* TCVerifyModel.m */,
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		58A7C8E41E933EA200B07E1A /* support */ = {
-			isa = PBXGroup;
-			children = (
-				58A7C8E51E933EA200B07E1A /* loading */,
-				58A7C8EA1E933EA200B07E1A /* UIView+Addition.h */,
-				58A7C8EB1E933EA200B07E1A /* UIView+Addition.m */,
-			);
-			path = support;
-			sourceTree = "<group>";
-		};
-		58A7C8E51E933EA200B07E1A /* loading */ = {
-			isa = PBXGroup;
-			children = (
-				58A7C8E61E933EA200B07E1A /* CABasicAnimation+Category.h */,
-				58A7C8E71E933EA200B07E1A /* CABasicAnimation+Category.m */,
-				58A7C8E81E933EA200B07E1A /* ZKLoading.h */,
-				58A7C8E91E933EA200B07E1A /* ZKLoading.m */,
-			);
-			path = loading;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -396,24 +404,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58A7C9031E933EA200B07E1A /* OK@2x.png in Resources */,
-				58A7C9011E933EA200B07E1A /* logo-touclick@2x.png in Resources */,
-				58A7C9021E933EA200B07E1A /* logo-w@2x.png in Resources */,
-				58A7C8FB1E933EA200B07E1A /* done@2x.png in Resources */,
-				58A7C90D1E933EA200B07E1A /* TCVerifyView.xib in Resources */,
-				58A7C8F91E933EA200B07E1A /* close1@2x.png in Resources */,
+				5831EDCA1E94973D00756DAC /* OK@2x.png in Resources */,
+				5831EDC91E94973D00756DAC /* logo-w@2x.png in Resources */,
+				5831EDC11E94973D00756DAC /* close2@2x.png in Resources */,
+				5831EDBE1E94973D00756DAC /* bubble1@2x.png in Resources */,
+				5831EDC71E94973D00756DAC /* logo-s@2x.png in Resources */,
+				5831EDC81E94973D00756DAC /* logo-touclick@2x.png in Resources */,
+				5831EDC61E94973D00756DAC /* logo-b@2x.png in Resources */,
 				588A6AD61E8CF4C900C11E48 /* LaunchScreen.storyboard in Resources */,
-				58A7C8FC1E933EA200B07E1A /* error@2x.png in Resources */,
-				58A7C8F81E933EA200B07E1A /* bubble2@2x.png in Resources */,
-				58A7C8FE1E933EA200B07E1A /* icon_refresh@2x.png in Resources */,
+				5831EDCB1E94973D00756DAC /* refresh1@2x.png in Resources */,
+				5831EDC31E94973D00756DAC /* error@2x.png in Resources */,
+				5831EDBD1E94973D00756DAC /* TCVerifyView.xib in Resources */,
+				5831EDCC1E94973D00756DAC /* refresh2@2x.png in Resources */,
+				5831EDBF1E94973D00756DAC /* bubble2@2x.png in Resources */,
 				588A6AD31E8CF4C900C11E48 /* Assets.xcassets in Resources */,
-				58A7C8FA1E933EA200B07E1A /* close2@2x.png in Resources */,
-				58A7C8FD1E933EA200B07E1A /* icon_close@2x.png in Resources */,
-				58A7C9041E933EA200B07E1A /* refresh1@2x.png in Resources */,
-				58A7C8FF1E933EA200B07E1A /* logo-b@2x.png in Resources */,
-				58A7C8F71E933EA200B07E1A /* bubble1@2x.png in Resources */,
-				58A7C9001E933EA200B07E1A /* logo-s@2x.png in Resources */,
-				58A7C9051E933EA200B07E1A /* refresh2@2x.png in Resources */,
+				5831EDC51E94973D00756DAC /* icon_refresh@2x.png in Resources */,
+				5831EDC21E94973D00756DAC /* done@2x.png in Resources */,
+				5831EDC41E94973D00756DAC /* icon_close@2x.png in Resources */,
+				5831EDC01E94973D00756DAC /* close1@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,19 +446,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58A7C90B1E933EA200B07E1A /* TCVerifyButton.m in Sources */,
+				5831EDB81E94973D00756DAC /* TCNetManager.m in Sources */,
+				5831EDBB1E94973D00756DAC /* TCVerifyUtil.m in Sources */,
+				5831EDB91E94973D00756DAC /* TCVerifyButton.m in Sources */,
+				5831EDCF1E94973D00756DAC /* UIView+Addition.m in Sources */,
 				588A6B031E8CFCB500C11E48 /* TCViewController.m in Sources */,
-				58A7C9091E933EA200B07E1A /* ZKLoading.m in Sources */,
+				5831EDBC1E94973D00756DAC /* TCVerifyView.m in Sources */,
+				5831EDBA1E94973D00756DAC /* TCVerifyTabbar.m in Sources */,
+				5831EDB61E94973D00756DAC /* CABasicAnimation+Category.m in Sources */,
+				5831EDCE1E94973D00756DAC /* TCVerifyModel.m in Sources */,
+				5831EDCD1E94973D00756DAC /* TCCheckModel.m in Sources */,
 				588A6ACB1E8CF4C900C11E48 /* AppDelegate.m in Sources */,
-				58A7C9121E933EE400B07E1A /* TCVerifyTabbar.m in Sources */,
-				58A7C90C1E933EA200B07E1A /* TCVerifyView.m in Sources */,
-				58A7C91E1E93722A00B07E1A /* TCVerifyUtil.m in Sources */,
-				58A7C91D1E93722A00B07E1A /* TCNetManager.m in Sources */,
+				5831EDB71E94973D00756DAC /* ZKLoading.m in Sources */,
 				588A6AC81E8CF4C900C11E48 /* main.m in Sources */,
-				58A7C90A1E933EA200B07E1A /* UIView+Addition.m in Sources */,
-				58A7C9061E933EA200B07E1A /* TCCheckModel.m in Sources */,
-				58A7C9071E933EA200B07E1A /* TCVerifyModel.m in Sources */,
-				58A7C9081E933EA200B07E1A /* CABasicAnimation+Category.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

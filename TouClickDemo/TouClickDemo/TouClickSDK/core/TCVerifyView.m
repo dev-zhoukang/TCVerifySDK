@@ -40,9 +40,6 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self setup];
-    [self checkDataAndThen:^(){
-        [self requestCaptcha];
-    }];
 }
 
 + (instancetype)showWithCt:(NSString *)ct Completion:(void (^)(TCVerifyModel *))completion {
@@ -55,6 +52,11 @@
     view.containerView.layer.transform = CATransform3DMakeScale(.01f, .01f, 1.f);
     view.containerView.alpha = 0.0f;
     view.completion = completion;
+    
+    [view layoutIfNeeded];
+    [view checkDataAndThen:^(){
+        [view requestCaptcha];
+    }];
     
     [UIView animateWithDuration:.02
                           delay:0.0 options:KeyboardAnimationCurve
@@ -271,7 +273,7 @@
 
 - (void)verifyError {
     _topImageView.image = [UIImage imageNamed:@"error"];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self refreshAction:nil];
     });
 }
