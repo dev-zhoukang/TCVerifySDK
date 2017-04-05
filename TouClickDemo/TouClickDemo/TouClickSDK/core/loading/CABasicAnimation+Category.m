@@ -22,7 +22,6 @@
     //定义动画的样式 渐入式   timingFunction 控制动画运行的节奏
     animation.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     return animation;
-
 }
 
 @end

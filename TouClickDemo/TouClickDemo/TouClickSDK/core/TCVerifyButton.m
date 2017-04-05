@@ -71,16 +71,6 @@ typedef void (^ZKSettingItemBlock)(NSString *token);
     [[UIApplication sharedApplication].keyWindow endEditing:true];
     DLog(@"start verify");
     [self setSucceeStyle:false];
-    /*
-     if (_passed) {
-     [self setTitle:@"已验证通过" forState:UIControlStateNormal];
-     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-     [self setTitle:@"验证成功" forState:UIControlStateNormal];
-     self.backgroundColor = [UIColor colorWithRed:80/255.f green:174/255.f blue:85/255.f alpha:1];
-     });
-     return;
-     }
-     */
     
     NSString *ct = [TCVerifyTabbar getSelectdType];
     [TCVerifyView showWithCt:ct Completion:^(TCVerifyModel *verifyModel) {
