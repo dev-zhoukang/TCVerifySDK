@@ -132,6 +132,10 @@ NSString *selectedType_;
 }
 
 - (void)didSelectType:(UIButton *)btn {
+    if ([btn isEqual:_selectedBtn]) {
+        return;
+    }
+    
     [self highlightBtn:btn];
     [self resumeBtn:_selectedBtn];
     _selectedBtn = btn;
