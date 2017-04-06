@@ -16,7 +16,7 @@
     [_contentView addSubview:_verifyBtn];
     [_verifyBtn verifyCompletion:^(NSString * _Nullable token) {
         if (token) {
-            DLog(@"验证成功, 获取到 tocken ==> %@", token);
+            DLog(@"验证成功, 获取到 token ==> %@", token);
         }
         else {
             DLog(@"验证失败");
@@ -30,4 +30,4 @@
 }
 ```
 3. 通过上面两步即可完成对 TCVerifySDK 的智能验证码系统的集成。
-更多功能参见 `TCVerifyButton` 和 `TCVerifyTabbar` 头文件
+  更多功能参见 `TCVerifyButton` 和 `TCVerifyTabbar` 头文件
