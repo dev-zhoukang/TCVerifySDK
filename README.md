@@ -7,9 +7,9 @@
 ```objective-c
 /**
   开发者只需关心该方法内的实现，verifyBtn 是验证按钮，其 UI 和 点击验证事件已封装在内部，
-验证结果会  通过 verifyCompletion block 回调给开发者。所以开发者只需设置其 frame 布局和接收回调即可。
-  底部的选择验证方式的 tabbar 只需实现 `showTabbarOnView:` 即可。layout 布局和点击按钮更换验证方式的  逻辑已封装在内部。
-如果开发者有监听点击更换验证方式的需求，只需将上面的 show 方法改成带有回调的即  可，即`showTabbarOnView: selectTypeCallback:`。
+验证结果会通过 verifyCompletion block 回调给开发者。所以开发者只需设置其 frame 布局和接收回调即可。
+  底部的选择验证方式的 tabbar 只需实现 `showTabbarOnView:` 即可。layout 布局和点击按钮更换验证方式的逻辑已封装在内部。
+如果开发者有监听点击更换验证方式的需求，只需将上面的 show 方法改成带有回调的即可，即`showTabbarOnView: selectTypeCallback:`。
 */
 - (void)setupVerifyView {
     _verifyBtn = [[TCVerifyButton alloc] init];
