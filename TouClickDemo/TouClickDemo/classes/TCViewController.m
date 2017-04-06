@@ -56,7 +56,7 @@ static const CGFloat kDefaultMargin = 15.f;
     [_contentView addSubview:_verifyBtn];
     [_verifyBtn verifyCompletion:^(NSString * _Nullable token) {
         if (token) {
-            DLog(@"验证成功, 获取到 tocken ==> %@", token);
+            DLog(@"验证成功, 获取到 token ==> %@", token);
         }
         else {
             DLog(@"验证失败");
@@ -141,7 +141,7 @@ static const CGFloat kDefaultMargin = 15.f;
     field.secureTextEntry = [title isEqualToString:@"密码"];
     field.us_origin = (CGPoint){CGRectGetMaxX(titleLabel.frame), 0};
     field.us_size = (CGSize){CGRectGetWidth(view.frame) - CGRectGetMaxX(titleLabel.frame) - 10.f, 30};
-    field.us_centerY = view.us_centerY + 1.f;
+    field.us_centerY = view.us_centerY;
     field.font = [UIFont systemFontOfSize:15.f];
     field.clipsToBounds = true;
     field.clearButtonMode = UITextFieldViewModeWhileEditing;
