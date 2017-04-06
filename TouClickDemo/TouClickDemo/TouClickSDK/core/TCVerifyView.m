@@ -157,7 +157,7 @@
     _bubbles = [[NSMutableArray alloc] init];
     
     _submitBtn.clipsToBounds = true;
-    _submitBtn.layer.cornerRadius = 15.f;
+    _submitBtn.layer.cornerRadius = 17.f;
     _submitBtn.layer.borderWidth = 1.f;
     [_submitBtn setTitleColor:GlobalBlueColor_Normal forState:UIControlStateNormal];
     [_submitBtn setTitleColor:GlobalBlueColor_Disabled forState:UIControlStateDisabled];
