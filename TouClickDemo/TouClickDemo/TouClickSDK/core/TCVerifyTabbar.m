@@ -78,10 +78,8 @@ NSString *selectedType_;
 }
 
 - (void)initData {
-    NSArray *oriArray = @[
-                           @{ @"title": @"图文验证", @"ct": @"13" },
-                           @{ @"title": @"图标验证", @"ct": @"14" }
-                           ];
+    NSArray *oriArray = @[ @{ @"title": @"图文验证", @"ct": @"13" },
+                           @{ @"title": @"图标验证", @"ct": @"14" } ];
     NSMutableArray *temp = [NSMutableArray arrayWithCapacity:oriArray.count];
     for (NSDictionary *dict in oriArray) {
         TCVerify *model = [TCVerify modelWithDict:dict];
