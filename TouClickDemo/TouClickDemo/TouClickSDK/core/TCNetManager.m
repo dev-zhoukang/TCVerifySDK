@@ -82,8 +82,7 @@
 }
 
 //把没有双引号和用了单引号的json字符串转化为标准格式字符串;
-- (NSString *)regularJsonString:(NSString *)json
-{
+- (NSString *)regularJsonString:(NSString *)json {
     // 将没有双引号的替换成有双引号的
     NSString *validString = [json stringByReplacingOccurrencesOfString:@"(\\w+)\\s*:([^A-Za-z0-9_])"
                                                             withString:@"\"$1\":$2"
